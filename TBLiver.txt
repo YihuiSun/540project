@@ -1,0 +1,4242 @@
+
+<HTML>
+<HEAD>
+
+<title>Case Simulation</title>
+
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=1" />
+
+<style>
+
+body {
+	font-family: arial;
+}
+
+.hide {
+	display: none;
+}
+
+p {
+	font-weight: bold;
+	font-size: 18px;
+}
+
+div.action {
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-style: solid;
+	border: solid #696969;
+	border-radius: 10px;
+	background-color: #ffffff;
+	color: #000000;
+	padding: 8px 8px;
+	width: 700px;
+	font-size: 17px;
+}
+
+div.end {
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-style: solid;
+	border: solid #191970;
+	border-radius: 10px;
+	background-color: #D8D8D8;
+	color: #000000;
+	padding: 8px 8px;
+	width: 700px;
+	font-size: 17px;
+}
+
+.checkbox {
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	width: 690px; 
+	height: 38px; 
+	margin: auto; 
+	display: inline-block; 
+	border: solid #808080;
+	vertical-align: middle; 
+	background: linear-gradient(#FFFFFF, #E8E8E8);
+	line-height: 35px;
+}
+
+.button {
+    -webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
+}
+
+.button:hover, .button:active {
+    background-image: -moz-none;
+    background-image: -webkit-none;
+    background-image: -webkit-none;
+    background-image: -o-none;
+    background-image:none;
+    background: linear-gradient(#E8E8E8, #FFFFFF);
+}
+
+.nextbutton:focus {outline:0 !important;}
+
+input[type='radio']:after {
+    width: 12px;
+    height: 12px;
+    border-radius: 12px;
+    top: -1px;
+    left: -2px;
+    position: relative;
+    background-color: #e3e4e3;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid #d1d3d1;
+}
+
+ input[type='radio']:checked:after {
+    width: 12px;
+    height: 12px;
+    border-radius: 12px;
+    top: -1px;
+    left: -2px;
+    position: relative;
+    background-color: #4682B4;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid #d1d3d1;
+}
+
+
+
+.some-element {
+    overflow-anchor: none;
+}
+
+</style>
+<head>
+<meta charset="ISO-8859-1">
+
+<title>Case Simulation</title>
+</head>
+<body>
+	<h1 align="center">Management of the Active TB Patient at Risk of Hepatotoxicity</h1>
+
+	<div id="div0" class="show" align="center">
+		<div id="labs0" class="action" align="left">
+			<p align="left">Draw Baseline Labs: T. Bili, AST, ALT, Alk Phos and HIV</p>
+			<label> <span class="checkbox button button:hover"> <input type="radio" class="checkmark" name="tab" id='div0norm' value="normal" onClick="enableBtn('plus0'); hide0('div0norm')" />Labs return Normal </span></label> <br>
+			<label> <span class="checkbox button button:hover"> <input type="radio" class="checkmark" name="tab" id='div0abnorm' value="abnormal" onClick="enableBtn('plus0'); hide0('div0abnorm')"/>Labs return Abnormal </span> </label>
+		</div>
+
+		<div id="plus0" class="nextbutton" align="center">
+		<input type="image" class="nextbutton" src="image/plus_btn.png" width="40" id="button0" name="plus0" disabled="disabled" style="opacity:0.3;" onclick="show0('plus0');" />
+		</div>
+		
+	</div>
+
+	<div id="div1" class="hide" align="center">
+	
+	<div id="div100" class="show" align="center">
+			<img id="arrow" src="image/arrow-black.gif" alt="MISSING GIF">
+		</div>
+	
+		<div id="lfts1" class="action" align="left">
+			<p align="left">Eliminate ETOH/other hepatotoxic agents: repeat LFTs in 7-10 days</p>
+			<label> <span class="checkbox button button:hover"> <input type="radio" name="tab1" id='div1less3x' value="less3xnorm" onClick="enableBtn('plus1'); hide1('div1less3x')"/>Less than 3 times upper normal </span></label> <br>
+			<label> <span class="checkbox button button:hover"> <input type="radio" name="tab1" id='div1more3x'	value="great3xnorm" onClick="enableBtn('plus1'); hide1('div1more3x')"/>More than 3 times upper normal </span></label><br>
+			<label> <span class="checkbox button button:hover"> <input type="radio" name="tab1" id='div1more5x'	value="great5xnorm" onClick="enableBtn('plus1'); hide1('div1more5x')"/>More than 5 times upper normal </span>
+			</label>
+		</div>
+
+		<div id="plus1" class="nextbutton" align="center">
+		<input type="image" class="nextbutton" src="image/plus_btn.png" width="40" id="button1" name="plus1" disabled="disabled" style="opacity:0.3;" onclick="show1('plus1');" />
+		</div>
+		
+	</div>
+
+	
+	<div id="div2" class="hide" align="center">
+	
+		<div id="div100" class="show" align="center">
+			<img id="arrow" src="image/arrow-black.gif" alt="MISSING GIF">
+		</div>
+	
+		<div id="symp2" class="action" align="left">
+			<p align="left">Patient is:</p>
+			<label> <span class="checkbox button button:hover"> <input type="radio" name="tab2" id='div2symp' value="symptomatic" onClick="enableBtn('plus2'); hide2('div2symp')"/>Symptomatic</span></label> <br>
+			<label> <span class="checkbox button button:hover"> <input type="radio" name="tab2" id='div2asymp' value="asymptomatic" onClick="enableBtn('plus2'); hide2('div2asymp')"/>Asymptomatic</span>
+			</label>
+		</div>
+
+		<div id="plus2" class="nextbutton" align="center">
+		<input type="image" class="nextbutton" src="image/plus_btn.png" width="40" id="button2" name="plus2" disabled="disabled" style="opacity:0.3;" onclick="show2('plus2');" />
+		</div>
+
+	</div>
+	
+	<div id="div3" class="hide" align="center">
+
+		<div id="div100" class="show" align="center">
+			<img id="arrow" src="image/arrow-black.gif" alt="MISSING GIF">
+		</div>
+
+		<div id="beginrx" class="end" align="left">
+			<p>
+				Begin FQN*, EMB, IA*/(note), Consultation
+			</p>
+		</div>
+	</div>
+	
+	<div id="div4" class="hide" align="center">
+	
+		<div id="div100" class="show" align="center">
+			<img id="arrow" src="image/arrow-black.gif" alt="MISSING GIF">
+		</div>
+	
+		<div id="symp4" class="action" align="left">
+			<p align="left">Patient is:</p>
+			<label> <span class="checkbox button button:hover"> <input type="radio" name="tab4" id='div4symp' value="symptomatic" onClick="enableBtn('plus4'); hide4('div4symp')"/>Symptomatic</span></label> <br>
+			<label> <span class="checkbox button button:hover"> <input type="radio" name="tab4" id='div4asymp' value="asymptomatic" onClick="enableBtn('plus4'); hide4('div4symp')"/>Asymptomatic</span>
+			</label>
+		</div>
+
+		<div id="plus4" class="nextbutton" align="center">
+		<input type="image" class="nextbutton" src="image/plus_btn.png" width="40" id="button4" name="plus4" disabled="disabled" style="opacity:0.3;" onclick="show4('plus4');" />
+		</div>
+
+	</div>
+	
+	<div id="div5" class="hide" align="center">
+
+		<div id="div100" class="show" align="center">
+			<img id="arrow" src="image/arrow-black.gif" alt="MISSING GIF">
+		</div>
+
+		<div id="drug5" class="action" align="left">
+			<p>Begin one hepatotoxic drug (usually RIF, EMB, FQN*) (note) Consultation</p>
+		</div>
+		
+		<div class="nextbutton" align="center">
+			<input type="image" class="nextbutton" src="image/plus_btn.png" width="40" id="button5" name="plus5" onclick="show5('plus5');" />
+		</div>
+	</div>
+	
+	<div id="div6" class="hide" align="center">
+	
+		<div id="div100" class="show" align="center">
+			<img id="arrow" src="image/arrow-black.gif" alt="MISSING GIF">
+		</div>
+	
+		<div id="test6" class="action" align="left">
+			<p align="left">Test for T. Bili/LFTs at least weekly</p>
+			<label><span class="checkbox button button:hover"> <input type="radio" name="tab6" id='div6incr' value="increasetbili" onClick="enableBtn('plus6'); hide6('div6incr')"/>Increase in T. Bili and/or LFTs</span></label> <br>
+			<label><span class="checkbox button button:hover"> <input type="radio" name="tab6" id='div6stable' value="stabletbili" onClick="enableBtn('plus6'); hide6('div6stable')"/>LTFs stable for 2 weeks</span></label> <br>
+			<label><span class="checkbox button button:hover"> <input type="radio" name="tab6" id='div6improv' value="improvtbili" onClick="enableBtn('plus6'); hide6('div6improv')"/>Improved LFTs</span></label>
+		</div>
+
+		<div id="plus6" class="nextbutton" align="center">
+		<input type="image" class="nextbutton" src="image/plus_btn.png" width="40" id="button6" name="plus6" disabled="disabled" style="opacity:0.3;" onclick="show6('plus6');" />
+		</div>
+
+	</div>
+	
+	<div id="div7" class="hide" align="center">
+
+		<div id="div100" class="show" align="center">
+			<img id="arrow" src="image/arrow-black.gif" alt="MISSING GIF">
+		</div>
+
+		<div id="hold7" class="action" align="left">
+			<p>Hold Rx</p>
+		</div>
+		<div class="nextbutton" align="center">
+			<input type="image" class="nextbutton" src="image/plus_btn.png" width="40" id="button7" name="plus7" onclick="show7('plus7');" />
+		</div>
+	</div>
+	
+	<div id="div7_1" class="hide" align="center">
+
+		<div id="div100" class="show" align="center">
+			<img id="arrow" src="image/arrow-black.gif" alt="MISSING GIF">
+		</div>
+
+		<div id="beginrx" class="end" align="left">
+			<p>
+				Begin FQN*, EMB, IA*/(note), Consultation
+			</p>
+		</div>
+	</div>
+	
+	<div id="div8" class="hide" align="center">
+
+		<div id="div100" class="show" align="center">
+			<img id="arrow" src="image/arrow-black.gif" alt="MISSING GIF">
+		</div>
+
+		<div id="lftmonthly" class="end" align="left">
+			<p>
+				LFTs Monthly
+			</p>
+		</div>
+	</div>
+	
+	<div id="div9" class="hide" align="center">
+
+		<div id="div100" class="show" align="center">
+			<img id="arrow" src="image/arrow-black.gif" alt="MISSING GIF">
+		</div>
+
+		<div id="addrx" class="action" align="left">
+			<p>Consider the addition of INH to RIF, EMB and FQN*</p>
+		</div>
+		<div class="nextbutton" align="center">
+			<input type="image" class="nextbutton" src="image/plus_btn.png" width="40" id="button9" name="plus9" onclick="show9('plus9');" />
+		</div>
+	</div>
+	
+	<div id="div10" class="hide" align="center">
+
+		<div id="div100" class="show" align="center">
+			<img id="arrow" src="image/arrow-black.gif" alt="MISSING GIF">
+		</div>
+
+		<div id="testtweekly" class="action" align="left">
+			<p>Test T. Bili and LFTs weekly</p>
+			<label><span class="checkbox button button:hover"><input type="radio" id='div10norm' name="tab10" value="normaltest" onClick="enableBtn('plus10'); hide10('div10norm')">T. Bili/LFTs Stable x1 month &nbsp;</span> </label><br>
+			<label><span class="checkbox button button:hover"><input type="radio" id='div10tox' name="tab10" value="abnormaltest" onClick="enableBtn('plus10'); hide10('div10tox')">Clinical Toxicity or increase in AST, ALT, or T. Bili</span></label>
+		</div>
+
+		<div id="plus10" class="nextbutton" align="center">
+		<input type="image" class="nextbutton" src="image/plus_btn.png" width="40" id="button10" name="plus10" disabled="disabled" style="opacity:0.3;" onclick="show10('plus10');" />
+		</div>
+
+	</div>
+	
+	<div id="div11" class="hide" align="center">
+
+		<div id="div100" class="show" align="center">
+			<img id="arrow" src="image/arrow-black.gif" alt="MISSING GIF">
+		</div>
+
+		<div id="normlfts11" class="end" align="left">
+			<p>
+				TLFTs monthly
+			</p>
+		</div>
+	</div>
+
+	<div id="div12" class="hide" align="center">
+
+		<div id="div100" class="show" align="center">
+			<img id="arrow" src="image/arrow-black.gif" alt="MISSING GIF">
+		</div>
+
+		<div id="holdmeds12" class="action" align="left">
+			<p>Hold TB meds, T. Bili/LFTs at least weekly</p>
+		</div>
+		
+		<div class="nextbutton" align="center">
+			<input type="image" class="nextbutton" src="image/plus_btn.png" width="40" id="button12" name="plus12" onclick="show12('plus12');" />
+		</div>
+	</div>
+
+	<div id="div13" class="hide" align="center">
+
+		<div id="div100" class="show" align="center">
+			<img id="arrow" src="image/arrow-black.gif" alt="MISSING GIF">
+		</div>
+
+		<div id="normaltest13" class="action" align="left">
+			<p>T. Bili, AST, ALT less than 2x normal or return to baseline</p>
+		</div>
+
+		<div class="nextbutton" align="center">
+			<input type="image" class="nextbutton" src="image/plus_btn.png" width="40" id="button13" name="plus13" onclick="show13('plus13');" />
+		</div>
+	</div>
+
+	<div id="div14" class="hide" align="center">
+
+		<div id="div100" class="show" align="center">
+			<img id="arrow" src="image/arrow-black.gif" alt="MISSING GIF">
+		</div>
+
+		<div id="startrx14" class="action" align="left">
+			<p>Start RIF, EMB, FQN* (note)/Consultation</p>
+		</div>
+
+		<div class="nextbutton" align="center">
+			<input type="image" class="nextbutton" src="image/plus_btn.png" width="40" id="button14" name="plus14" onclick="show14('plus14');" />
+		</div>
+	</div>
+
+	<div id="div15" class="hide" align="center">
+
+		<div id="div100" class="show" align="center">
+			<img id="arrow" src="image/arrow-black.gif" alt="MISSING GIF">
+		</div>
+
+		<div id="stable15" class="action" align="left">
+			<p>T. Bili/LFTs stable x2 weeks</p>
+		</div>
+		
+		<div class="nextbutton" align="center">
+			<input type="image" class="nextbutton" src="image/plus_btn.png" width="40" id="button15" name="plus15" onclick="show15('plus15');" />
+		</div>
+	</div>
+	
+	<div id="div16" class="hide" align="center">
+
+		<div id="div100" class="show" align="center">
+			<img id="arrow" src="image/arrow-black.gif" alt="MISSING GIF">
+		</div>
+
+		<div id="monthlytest16" class="end" align="left">
+			<p>
+				T. Bili/LFTs monthly
+			</p>
+		</div>
+	</div>
+
+	<div id="div17" class="hide" align="center">
+
+		<div id="div100" class="show" align="center">
+			<img id="arrow" src="image/arrow-black.gif" alt="MISSING GIF">
+		</div>
+
+		<div id="hepatotoxrx" class="action" align="left">
+			<p>Begin 2 hepatotoxic drugs (usually INH, RIF, EMB (note))</p>
+		</div>
+		<div class="nextbutton" align="center">
+			<input type="image" class="nextbutton" src="image/plus_btn.png" width="40" id="button17" name="plus17" onclick="show17('plus17');" />
+		</div>
+	</div>
+
+	<div id="div18" class="hide" align="center">
+
+		<div id="div100" class="show" align="center">
+			<img id="arrow" src="image/arrow-black.gif" alt="MISSING GIF">
+		</div>
+
+		<div id="repeattest" class="action" align="left">
+			<p>Repeat T. Bili/LFTs at least every 2 weeks</p>
+			<label><span class="checkbox button button:hover"><input type="radio" id='div18stable' name="tab4" value="normaltest" onClick="enableBtn('plus18'); hide18('div18stable')">T. Bili/LFTs stable x1 month &nbsp;</span> </label><br>
+			<label><span class="checkbox button button:hover"><input type="radio" id='div18abnorm' name="tab4" value="abnormaltest" onClick="enableBtn('plus18'); hide18('div18abnorm')">Clinical toxicity or elevated T. Bili or LFTs</span></label>
+		</div>
+
+		<div id="plus18" class="nextbutton" align="center">
+		<input type="image" class="nextbutton" src="image/plus_btn.png" width="40" id="button18" name="plus18" disabled="disabled" style="opacity:0.3;" onclick="show18('plus18');" />
+		</div>
+
+	</div>
+
+	<div id="div19" class="hide" align="center">
+
+		<div id="div100" class="show" align="center">
+			<img id="arrow" src="image/arrow-black.gif" alt="MISSING GIF">
+		</div>
+
+		<div id="lftmonthly" class="end" align="left">
+			<p>
+				T. Bili/LFTs Monthly
+			</p>
+		</div>
+	</div>
+	
+	<div id="div20" class="hide" align="center">
+
+		<div id="div100" class="show" align="center">
+			<img id="arrow" src="image/arrow-black.gif" alt="MISSING GIF">
+		</div>
+
+		<div id="med20" class="action" align="left">
+			<p>INH, RIF, PZA, EMB</p>
+		</div>
+		<div class="nextbutton" align="center">
+			<input type="image" class="nextbutton" src="image/plus_btn.png" width="40" id="button20" name="plus20" onclick="show20('plus20');" />
+		</div>
+	</div>
+	
+	<div id="div21" class="hide" align="center">
+
+		<div id="div100" class="show" align="center">
+			<img id="arrow" src="image/arrow-black.gif" alt="MISSING GIF">
+		</div>
+
+		<div id="repeattest" class="action" align="left">
+			<p>Repeat T. Bili/LFTs every 2 weeks until stable x1 month</p>
+			<label><span class="checkbox button button:hover"><input type="radio" id='div21tox' name="tab21" value="toxicity" onClick="enableBtn('plus21'); hide21('div21tox')">Clinical toxicity or elevated T. Bili or LFTs &nbsp;</span> </label><br>
+			<label><span class="checkbox button button:hover"><input type="radio" id='div21norm' name="tab21" value="normaltest" onClick="enableBtn('plus21'); hide21('div21norm')">Clinically well, LFTs stable or improved</span></label>
+		</div>
+
+		<div id="plus21" class="nextbutton" align="center">
+		<input type="image" class="nextbutton" src="image/plus_btn.png" width="40" id="button21" name="plus21" disabled="disabled" style="opacity:0.3;" onclick="show21('plus21');" />
+		</div>
+
+	</div>
+	
+	<div id="div22" class="hide" align="center">
+
+		<div id="div100" class="show" align="center">
+			<img id="arrow" src="image/arrow-black.gif" alt="MISSING GIF">
+		</div>
+
+		<div id="holdmed" class="action" align="left">
+			<p>Hold TB meds, T. Bili/LFTs at least weekly</p>
+		</div>
+		<div class="nextbutton" align="center">
+			<input type="image" class="nextbutton" src="image/plus_btn.png" width="40" id="button22" name="plus22" onclick="show22('plus22');" />
+		</div>
+	</div>
+
+	<div id="div23" class="hide" align="center">
+
+		<div id="div100" class="show" align="center">
+			<img id="arrow" src="image/arrow-black.gif" alt="MISSING GIF">
+		</div>
+
+		<div id="test23" class="action" align="left">
+			<p>T. Bili/LFTs 2x/week</p>
+		</div>
+		<div class="nextbutton" align="center">
+			<input type="image" class="nextbutton" src="image/plus_btn.png" width="40" id="button23" name="plus23" onclick="show23('plus23');" />
+		</div>
+	</div>
+	
+	<div id="div24" class="hide" align="center">
+
+		<div id="div100" class="show" align="center">
+			<img id="arrow" src="image/arrow-black.gif" alt="MISSING GIF">
+		</div>
+
+		<div id="startmeds24" class="action" align="left">
+			<p>T. Bili/LFTs 2x/week</p>
+			<label><span class="checkbox button button:hover"><input type="radio" id='div24norm' name="tab24" value="stable" onClick="enableBtn('plus24'); hide24('div24norm')">When LFTs stable x1 week &nbsp;</span> </label><br>
+			<label><span class="checkbox button button:hover"><input type="radio" id='div24abn' name="tab24" value="abnormtest" onClick="enableBtn('plus24'); hide24('div24abm')">Further AST, ALT and/or T. Bili STOP RIF/EMB</span></label>
+		</div>
+
+		<div id="plus24" class="nextbutton" align="center">
+		<input type="image" class="nextbutton" src="image/plus_btn.png" width="40" id="button24" name="plus24" disabled="disabled" style="opacity:0.3;" onclick="show24('plus24');" />
+		</div>
+
+	</div>
+	
+	<div id="div25" class="hide" align="center">
+
+		<div id="div100" class="show" align="center">
+			<img id="arrow" src="image/arrow-black.gif" alt="MISSING GIF">
+		</div>
+
+		<div id="normalrx" class="action" align="left">
+			<p>When AST, ALT less than 2x normal, start INH, EMB, FQN*, IA** (note) <br> Consultation</p>
+		</div>
+
+		<div class="nextbutton" align="center">
+			<input type="image" class="nextbutton" src="image/plus_btn.png" width="40" id="button25" name="plus25" onclick="show25('plus25');" />
+		</div>
+	</div>
+	
+	<div id="div26" class="hide" align="center">
+
+		<div id="div100" class="show" align="center">
+			<img id="arrow" src="image/arrow-black.gif" alt="MISSING GIF">
+		</div>
+
+		<div id="test26" class="action" align="left">
+			<p>T. Bili/lFTs 2x per week</p>
+			<label><span class="checkbox button button:hover"><input type="radio" id='div26norm' name="tab26" value="normaltest" onClick="enableBtn('plus26'); hide26('div26norm')">T. Bili/LFTs stable &nbsp;</span> </label><br>
+			<label><span class="checkbox button button:hover"><input type="radio" id='div26abn' name="tab26" value="abnormaltest" onClick="enableBtn('plus26'); hide26('div26abn')">Increase LFTs and/or T. Bili</span></label>
+		</div>
+
+		<div id="plus26" class="nextbutton" align="center">
+		<input type="image" class="nextbutton" src="image/plus_btn.png" width="40" id="button26" name="plus26" disabled="disabled" style="opacity:0.3;" onclick="show26('plus26');" />
+		</div>
+
+	</div>
+	
+	
+	<div id="div27" class="hide" align="center">
+
+		<div id="div100" class="show" align="center">
+			<img id="arrow" src="image/arrow-black.gif" alt="MISSING GIF">
+		</div>
+
+		<div id="beginmeds" class="end" align="left">
+			<p>
+				Begin FQN*, EMB, IA** (note), consultation
+			</p>
+		</div>
+	</div>
+	
+	<div id="div28" class="hide" align="center">
+
+		<div id="div100" class="show" align="center">
+			<img id="arrow" src="image/arrow-black.gif" alt="MISSING GIF">
+		</div>
+
+		<div id="addinh" class="action" align="left">
+			<p>Add INH</p>
+		</div>
+
+		<div class="nextbutton" align="center">
+			<input type="image" class="nextbutton" src="image/plus_btn.png" width="40" id="button28" name="plus28" onclick="show28('plus28');" />
+		</div>
+	</div>
+	
+	<div id="div29" class="hide" align="center">
+
+		<div id="div100" class="show" align="center">
+			<img id="arrow" src="image/arrow-black.gif" alt="MISSING GIF">
+		</div>
+
+		<div id="test29" class="action" align="left">
+			<p>T. Bili and LFTs 2x/week</p>
+			<label><span class="checkbox button button:hover"><input type="radio" id='div29norm' name="tab29" value="normaltest" onClick="enableBtn('plus29'); hide29('div29norm')">T. Bili/LFTs stable x2 weeks &nbsp;</span> </label><br>
+			<label><span class="checkbox button button:hover"><input type="radio" id='div29abn' name="tab29" value="abnormaltest" onClick="enableBtn('plus29'); hide29('div29abn')">Increase in LFTs and/or T. Bili</span></label>
+		</div>
+
+		<div id="plus29" class="nextbutton" align="center">
+		<input type="image" class="nextbutton" src="image/plus_btn.png" width="40" id="button29" name="plus29" disabled="disabled" style="opacity:0.3;" onclick="show29('plus29');" />
+		</div>
+
+	</div>
+
+	<div id="div30" class="hide" align="center">
+
+		<div id="div100" class="show" align="center">
+			<img id="arrow" src="image/arrow-black.gif" alt="MISSING GIF">
+		</div>
+
+		<div id="monthly30" class="end" align="left">
+			<p>
+				T. Bili/LFTs monthly
+			</p>
+		</div>
+	</div>
+
+	<div id="div31" class="hide" align="center">
+
+		<div id="div100" class="show" align="center">
+			<img id="arrow" src="image/arrow-black.gif" alt="MISSING GIF">
+		</div>
+
+		<div id="holdmeds" class="action" align="left">
+			<p>Hold TB Meds</p>
+		</div>
+		<div class="nextbutton" align="center">
+			<input type="image" class="nextbutton" src="image/plus_btn.png" width="40" id="button31" name="plus31" onclick="show31('plus31');" />
+		</div>
+	</div>
+	
+	<div id="div32" class="hide" align="center">
+
+		<div id="div100" class="show" align="center">
+			<img id="arrow" src="image/arrow-black.gif" alt="MISSING GIF">
+		</div>
+
+		<div id="testnorm" class="action" align="left">
+			<p>T. Bili/LFTs less than 2x normal</p>
+		</div>
+		<div class="nextbutton" align="center">
+			<input type="image" class="nextbutton" src="image/plus_btn.png" width="40" id="button32" name="plus32" onclick="show32('plus32');" />
+		</div>
+	</div>
+	
+	<div id="div33" class="hide" align="center">
+
+		<div id="div100" class="show" align="center">
+			<img id="arrow" src="image/arrow-black.gif" alt="MISSING GIF">
+		</div>
+
+		<div id="treat33" class="action" align="left">
+			<p>RIF, EMB, FQN*/(note) Consultation</p>
+		</div>
+
+		<div class="nextbutton" align="center">
+			<input type="image" class="nextbutton" src="image/plus_btn.png" width="40" id="button33" name="plus33" onclick="show33('plus33');" />
+		</div>
+	</div>
+	
+	<div id="div34" class="hide" align="center">
+
+		<div id="div100" class="show" align="center">
+			<img id="arrow" src="image/arrow-black.gif" alt="MISSING GIF">
+		</div>
+
+		<div id="tx34" class="action" align="left">
+			<p>INH, RIF, PZA, EMB</p>
+		</div>
+
+		<div class="nextbutton" align="center">
+			<input type="image" class="nextbutton" src="image/plus_btn.png" width="40" id="button34" name="plus34" onclick="show34('plus34');" />
+		</div>
+	</div>
+	
+	
+	<div id="div35" class="hide" align="center">
+
+		<div id="div100" class="show" align="center">
+			<img id="arrow" src="image/arrow-black.gif" alt="MISSING GIF">
+		</div>
+
+		<div id="reptest" class="action" align="left">
+			<p>Repeat T. Bili/LFTs if clinical assessment identifies need or signs/symptoms of hepatitis develop</p>
+		</div>
+
+		<div class="nextbutton" align="center">
+			<input type="image" class="nextbutton" src="image/plus_btn.png" width="40" id="button35" name="plus35" onclick="show35('plus35');" />
+		</div>
+	</div>
+	
+	<div id="div36" class="hide" align="center">
+
+		<div id="div100" class="show" align="center">
+			<img id="arrow" src="image/arrow-black.gif" alt="MISSING GIF">
+		</div>
+
+		<div id="stable36" class="action" align="left">
+			<p>Stable T. Bili, AST, ALT</p>
+		</div>
+		<div class="nextbutton" align="center">
+			<input type="image" class="nextbutton" src="image/plus_btn.png" width="40" id="button36" name="plus36" onclick="show36('plus36');" />
+		</div>
+	</div>
+	
+	<div id="div37" class="hide" align="center">
+
+		<div id="div100" class="show" align="center">
+			<img id="arrow" src="image/arrow-black.gif" alt="MISSING GIF">
+		</div>
+
+		<div id="monitor37" class="end" align="left">
+			<p>
+				Monitor T. Bili/LFTs monthly
+			</p>
+		</div>
+	</div>
+	
+		<div id="div38" class="hide" align="center">
+
+		<div id="div100" class="show" align="center">
+			<img id="arrow" src="image/arrow-black.gif" alt="MISSING GIF">
+		</div>
+
+		<div id="test38" class="action" align="left">
+			<p>T. Bili and LFTs 2x/week</p>
+			<label><span class="checkbox button button:hover"><input type="radio" id='div38norm' name="tab29" value="normaltest" onClick="enableBtn('plus38'); hide29('div29norm')">T. Bili/LFTs stable x2 weeks &nbsp;</span> </label><br>
+			<label><span class="checkbox button button:hover"><input type="radio" id='div38abn' name="tab29" value="abnormaltest" onClick="enableBtn('plus38'); hide29('div29abn')">Increase in LFTs and/or T. Bili</span></label>
+		</div>
+
+		<div id="plus38" class="nextbutton" align="center">
+		<input type="image" class="nextbutton" src="image/plus_btn.png" width="40" id="button39" name="plus38" disabled="disabled" style="opacity:0.3;" onclick="show38('plus38');" />
+		</div>
+
+	</div>
+	
+	<div id="div40" class="hide" align="center">
+
+		<div id="div100" class="show" align="center">
+			<img id="arrow" src="image/arrow-black.gif" alt="MISSING GIF">
+		</div>
+
+		<div id="monitor37" class="end" align="left">
+			<p>
+				Begin FQN*, EMB, IA** (note) and CONSULTATION
+			</p>
+		</div>
+	</div>
+	
+	<div id="div40" class="hide" align="center">
+
+		<div id="div100" class="show" align="center">
+			<img id="arrow" src="image/arrow-black.gif" alt="MISSING GIF">
+		</div>
+
+		<div id="monitor37" class="end" align="left">
+			<p>
+				Monitor T. Bili/LFTs monthly
+			</p>
+		</div>
+	</div>
+
+	<script>
+	var image = document.getElementById("plus");
+
+	function changeSign(name) {
+		var image = document.getElementsByName(name)[0];
+
+		if (image.getAttribute('src') == "image/plus_btn.png") {
+			image.src = "image/minus_btn.png";
+			console.log("Showing");
+		} else {
+			image.src = "image/plus_btn.png";
+		}
+	}
+
+	function show0(name) {
+		changeSign(name);
+		var image = document.getElementsByName(name)[0];
+		if (image.getAttribute('src') == "image/plus_btn.png") {
+			console.log("hiding0");
+			
+			document.getElementById("button1").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button1").setAttribute("disabled","disabled");
+			document.getElementById("button1").setAttribute("style","opacity:0.3;");
+			document.getElementById("div1less3x").checked = false;
+			document.getElementById("div1more3x").checked = false;
+			document.getElementById("div1more5x").checked = false;
+			document.getElementById('div1').style.display = 'none';
+
+			document.getElementById("button2").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button2").setAttribute("disabled","disabled");
+			document.getElementById("button2").setAttribute("style","opacity:0.3;");
+			document.getElementById("div2symp").checked = false;
+			document.getElementById("div2asymp").checked = false;
+			document.getElementById('div2').style.display = 'none';
+
+			document.getElementById('div3').style.display = 'none';
+
+			document.getElementById("button4").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button4").setAttribute("disabled","disabled");
+			document.getElementById("button4").setAttribute("style","opacity:0.3;");
+			document.getElementById("div4symp").checked = false;
+			document.getElementById("div4asymp").checked = false;
+			document.getElementById('div4').style.display = 'none';
+
+			document.getElementById("button5").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div5').style.display = 'none';
+
+			document.getElementById("button6").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button6").setAttribute("disabled","disabled");
+			document.getElementById("button6").setAttribute("style","opacity:0.3;");
+			document.getElementById("div6incr").checked = false;
+			document.getElementById("div6stable").checked = false;
+			document.getElementById("div6improv").checked = false;
+			document.getElementById('div6').style.display = 'none';
+
+			document.getElementById("button7").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div7').style.display = 'none';
+
+			document.getElementById('div7_1').style.display = 'none';
+
+			document.getElementById('div8').style.display = 'none';
+
+			document.getElementById("button9").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div9').style.display = 'none';
+
+			document.getElementById("button10").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button10").setAttribute("disabled","disabled");
+			document.getElementById("button10").setAttribute("style","opacity:0.3;");
+			document.getElementById("div10norm").checked = false;
+			document.getElementById("div10tox").checked = false;
+			document.getElementById('div10').style.display = 'none';
+
+			document.getElementById('div11').style.display = 'none';
+
+			document.getElementById("button12").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div12').style.display = 'none';
+
+			document.getElementById("button13").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div13').style.display = 'none';
+
+			document.getElementById("button14").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div14').style.display = 'none';
+
+			document.getElementById("button15").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div15').style.display = 'none';
+
+			document.getElementById('div16').style.display = 'none';
+
+			document.getElementById("button17").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div17').style.display = 'none';
+
+			document.getElementById("button18").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button18").setAttribute("disabled","disabled");
+			document.getElementById("button18").setAttribute("style","opacity:0.3;");
+			document.getElementById("div18stable").checked = false;
+			document.getElementById("div18abnorm").checked = false;
+			document.getElementById('div18').style.display = 'none';
+
+			document.getElementById('div19').style.display = 'none';
+
+			document.getElementById("button20").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div20').style.display = 'none';
+
+			document.getElementById("button21").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button21").setAttribute("disabled","disabled");
+			document.getElementById("button21").setAttribute("style","opacity:0.3;");
+			document.getElementById("div21tox").checked = false;
+			document.getElementById("div21norm").checked = false;
+			document.getElementById('div21').style.display = 'none';
+
+			document.getElementById("button22").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div22').style.display = 'none';
+
+			document.getElementById("button23").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div23').style.display = 'none';
+
+			document.getElementById("button24").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button24").setAttribute("disabled","disabled");
+			document.getElementById("button24").setAttribute("style","opacity:0.3;");
+			document.getElementById("div24norm").checked = false;
+			document.getElementById("div24abn").checked = false;
+			document.getElementById('div24').style.display = 'none';
+
+			document.getElementById("button25").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div25').style.display = 'none';
+
+			document.getElementById("button26").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button26").setAttribute("disabled","disabled");
+			document.getElementById("button26").setAttribute("style","opacity:0.3;");
+			document.getElementById("div26norm").checked = false;
+			document.getElementById("div26abn").checked = false;
+			document.getElementById('div26').style.display = 'none';
+
+			document.getElementById('div27').style.display = 'none';
+
+			document.getElementById("button28").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div28').style.display = 'none';
+
+			document.getElementById("button29").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div29').style.display = 'none';
+
+			document.getElementById('div30').style.display = 'none';
+
+			document.getElementById("button31").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div31').style.display = 'none';
+
+			document.getElementById("button32").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div32').style.display = 'none';
+
+			document.getElementById("button33").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div33').style.display = 'none';
+
+			document.getElementById("button34").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div34').style.display = 'none';
+
+			document.getElementById("button35").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div35').style.display = 'none';
+
+			document.getElementById("button36").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div36').style.display = 'none';
+
+			document.getElementById('div37').style.display = 'none';
+			
+			} else {
+				if (document.querySelector('input#div0norm').checked) {
+					console.log("div0");
+					document.getElementById('div1').style.display = 'none';
+					document.getElementById('div34').style.display = 'block';
+
+				}
+				if (document.querySelector('input#div0abnorm').checked) {
+					console.log("div11")
+					document.getElementById('div34').style.display = 'none';
+					document.getElementById('div1').style.display = 'block';
+				}
+			}
+		}
+
+	function show1(name) {
+		changeSign(name);
+		var image = document.getElementsByName(name)[0];
+		if (image.getAttribute('src') == "image/plus_btn.png") {
+			console.log("hiding1");
+			
+			document.getElementById("button2").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button2").setAttribute("disabled","disabled");
+			document.getElementById("button2").setAttribute("style","opacity:0.3;");
+			document.getElementById("div2symp").checked = false;
+			document.getElementById("div2asymp").checked = false;
+			document.getElementById('div2').style.display = 'none';
+
+			document.getElementById('div3').style.display = 'none';
+
+			document.getElementById("button4").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button4").setAttribute("disabled","disabled");
+			document.getElementById("button4").setAttribute("style","opacity:0.3;");
+			document.getElementById("div4symp").checked = false;
+			document.getElementById("div4asymp").checked = false;
+			document.getElementById('div4').style.display = 'none';
+
+			document.getElementById("button5").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div5').style.display = 'none';
+
+			document.getElementById("button6").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button6").setAttribute("disabled","disabled");
+			document.getElementById("button6").setAttribute("style","opacity:0.3;");
+			document.getElementById("div6incr").checked = false;
+			document.getElementById("div6stable").checked = false;
+			document.getElementById("div6improv").checked = false;
+			document.getElementById('div6').style.display = 'none';
+
+			document.getElementById("button7").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div7').style.display = 'none';
+
+			document.getElementById('div7_1').style.display = 'none';
+
+			document.getElementById('div8').style.display = 'none';
+
+			document.getElementById("button9").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div9').style.display = 'none';
+
+			document.getElementById("button10").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button10").setAttribute("disabled","disabled");
+			document.getElementById("button10").setAttribute("style","opacity:0.3;");
+			document.getElementById("div10norm").checked = false;
+			document.getElementById("div10tox").checked = false;
+			document.getElementById('div10').style.display = 'none';
+
+			document.getElementById('div11').style.display = 'none';
+
+			document.getElementById("button12").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div12').style.display = 'none';
+
+			document.getElementById("button13").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div13').style.display = 'none';
+
+			document.getElementById("button14").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div14').style.display = 'none';
+
+			document.getElementById("button15").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div15').style.display = 'none';
+
+			document.getElementById('div16').style.display = 'none';
+
+			document.getElementById("button17").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div17').style.display = 'none';
+
+			document.getElementById("button18").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button18").setAttribute("disabled","disabled");
+			document.getElementById("button18").setAttribute("style","opacity:0.3;");
+			document.getElementById("div18stable").checked = false;
+			document.getElementById("div18abnorm").checked = false;
+			document.getElementById('div18').style.display = 'none';
+
+			document.getElementById('div19').style.display = 'none';
+
+			document.getElementById("button20").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div20').style.display = 'none';
+
+			document.getElementById("button21").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button21").setAttribute("disabled","disabled");
+			document.getElementById("button21").setAttribute("style","opacity:0.3;");
+			document.getElementById("div21tox").checked = false;
+			document.getElementById("div21norm").checked = false;
+			document.getElementById('div21').style.display = 'none';
+
+			document.getElementById("button22").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div22').style.display = 'none';
+
+			document.getElementById("button23").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div23').style.display = 'none';
+
+			document.getElementById("button24").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button24").setAttribute("disabled","disabled");
+			document.getElementById("button24").setAttribute("style","opacity:0.3;");
+			document.getElementById("div24norm").checked = false;
+			document.getElementById("div24abn").checked = false;
+			document.getElementById('div24').style.display = 'none';
+
+			document.getElementById("button25").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div25').style.display = 'none';
+
+			document.getElementById("button26").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button26").setAttribute("disabled","disabled");
+			document.getElementById("button26").setAttribute("style","opacity:0.3;");
+			document.getElementById("div26norm").checked = false;
+			document.getElementById("div26abn").checked = false;
+			document.getElementById('div26').style.display = 'none';
+
+			document.getElementById('div27').style.display = 'none';
+
+			document.getElementById("button28").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div28').style.display = 'none';
+
+			document.getElementById("button29").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div29').style.display = 'none';
+
+			document.getElementById('div30').style.display = 'none';
+
+			document.getElementById("button31").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div31').style.display = 'none';
+
+			document.getElementById("button32").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div32').style.display = 'none';
+
+			document.getElementById("button33").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div33').style.display = 'none';
+
+			document.getElementById("button34").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div34').style.display = 'none';
+
+			document.getElementById("button35").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div35').style.display = 'none';
+
+			document.getElementById("button36").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div36').style.display = 'none';
+
+			document.getElementById('div37').style.display = 'none';
+
+			} else {
+				if (document.querySelector('input#div0abnorm').checked
+						&& document.querySelector('input#div1less3x').checked) {
+					document.getElementById('div4').style.display = 'none';
+					document.getElementById('div2').style.display = 'none';
+					document.getElementById('div20').style.display = 'block';
+				}
+				if (document.querySelector('input#div0abnorm').checked
+						&& document.querySelector('input#div1more3x').checked) {
+					document.getElementById('div20').style.display = 'none';
+					document.getElementById('div2').style.display = 'none';
+					document.getElementById('div4').style.display = 'block';
+				}
+				if (document.querySelector('input#div0abnorm').checked
+						&& document.querySelector('input#div1more5x').checked) {
+					document.getElementById('div4').style.display = 'none';
+					document.getElementById('div20').style.display = 'none';
+					document.getElementById('div2').style.display = 'block';
+				}
+			}
+		}
+		
+	function show2(name) {
+		changeSign(name);
+		var image = document.getElementsByName(name)[0];
+		if (image.getAttribute('src') == "image/plus_btn.png") {
+			console.log("hiding2");
+			
+			document.getElementById('div3').style.display = 'none';
+
+			document.getElementById("button4").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button4").setAttribute("disabled","disabled");
+			document.getElementById("button4").setAttribute("style","opacity:0.3;");
+			document.getElementById("div4symp").checked = false;
+			document.getElementById("div4asymp").checked = false;
+			document.getElementById('div4').style.display = 'none';
+
+			document.getElementById("button5").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div5').style.display = 'none';
+
+			document.getElementById("button6").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button6").setAttribute("disabled","disabled");
+			document.getElementById("button6").setAttribute("style","opacity:0.3;");
+			document.getElementById("div6incr").checked = false;
+			document.getElementById("div6stable").checked = false;
+			document.getElementById("div6improv").checked = false;
+			document.getElementById('div6').style.display = 'none';
+
+			document.getElementById("button7").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div7').style.display = 'none';
+
+			document.getElementById('div7_1').style.display = 'none';
+
+			document.getElementById('div8').style.display = 'none';
+
+			document.getElementById("button9").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div9').style.display = 'none';
+
+			document.getElementById("button10").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button10").setAttribute("disabled","disabled");
+			document.getElementById("button10").setAttribute("style","opacity:0.3;");
+			document.getElementById("div10norm").checked = false;
+			document.getElementById("div10tox").checked = false;
+			document.getElementById('div10').style.display = 'none';
+
+			document.getElementById('div11').style.display = 'none';
+
+			document.getElementById("button12").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div12').style.display = 'none';
+
+			document.getElementById("button13").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div13').style.display = 'none';
+
+			document.getElementById("button14").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div14').style.display = 'none';
+
+			document.getElementById("button15").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div15').style.display = 'none';
+
+			document.getElementById('div16').style.display = 'none';
+
+			document.getElementById("button17").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div17').style.display = 'none';
+
+			document.getElementById("button18").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button18").setAttribute("disabled","disabled");
+			document.getElementById("button18").setAttribute("style","opacity:0.3;");
+			document.getElementById("div18stable").checked = false;
+			document.getElementById("div18abnorm").checked = false;
+			document.getElementById('div18').style.display = 'none';
+
+			document.getElementById('div19').style.display = 'none';
+
+			document.getElementById("button20").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div20').style.display = 'none';
+
+			document.getElementById("button21").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button21").setAttribute("disabled","disabled");
+			document.getElementById("button21").setAttribute("style","opacity:0.3;");
+			document.getElementById("div21tox").checked = false;
+			document.getElementById("div21norm").checked = false;
+			document.getElementById('div21').style.display = 'none';
+
+			document.getElementById("button22").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div22').style.display = 'none';
+
+			document.getElementById("button23").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div23').style.display = 'none';
+
+			document.getElementById("button24").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button24").setAttribute("disabled","disabled");
+			document.getElementById("button24").setAttribute("style","opacity:0.3;");
+			document.getElementById("div24norm").checked = false;
+			document.getElementById("div24abn").checked = false;
+			document.getElementById('div24').style.display = 'none';
+
+			document.getElementById("button25").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div25').style.display = 'none';
+
+			document.getElementById("button26").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button26").setAttribute("disabled","disabled");
+			document.getElementById("button26").setAttribute("style","opacity:0.3;");
+			document.getElementById("div26norm").checked = false;
+			document.getElementById("div26abn").checked = false;
+			document.getElementById('div26').style.display = 'none';
+
+			document.getElementById('div27').style.display = 'none';
+
+			document.getElementById("button28").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div28').style.display = 'none';
+
+			document.getElementById("button29").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div29').style.display = 'none';
+
+			document.getElementById('div30').style.display = 'none';
+
+			document.getElementById("button31").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div31').style.display = 'none';
+
+			document.getElementById("button32").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div32').style.display = 'none';
+
+			document.getElementById("button33").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div33').style.display = 'none';
+
+			document.getElementById("button34").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div34').style.display = 'none';
+
+			document.getElementById("button35").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div35').style.display = 'none';
+
+			document.getElementById("button36").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div36').style.display = 'none';
+
+			document.getElementById('div37').style.display = 'none';
+
+			} else {
+				if (document.querySelector('input#div2symp').checked) {
+					console.log("div3");
+					document.getElementById('div5').style.display = 'none';
+					document.getElementById('div3').style.display = 'block';
+
+				}
+				if (document.querySelector('input#div2asymp').checked) {
+					console.log("div5")
+					document.getElementById('div3').style.display = 'none';
+					document.getElementById('div5').style.display = 'block';
+				}
+			}
+		}
+
+	function show4(name) {
+		changeSign(name);
+		var image = document.getElementsByName(name)[0];
+		if (image.getAttribute('src') == "image/plus_btn.png") {
+			console.log("hiding4");
+			
+			document.getElementById("button5").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div5').style.display = 'none';
+
+			document.getElementById("button6").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button6").setAttribute("disabled","disabled");
+			document.getElementById("button6").setAttribute("style","opacity:0.3;");
+			document.getElementById("div6incr").checked = false;
+			document.getElementById("div6stable").checked = false;
+			document.getElementById("div6improv").checked = false;
+			document.getElementById('div6').style.display = 'none';
+
+			document.getElementById("button7").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div7').style.display = 'none';
+
+			document.getElementById('div7_1').style.display = 'none';
+
+			document.getElementById('div8').style.display = 'none';
+
+			document.getElementById("button9").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div9').style.display = 'none';
+
+			document.getElementById("button10").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button10").setAttribute("disabled","disabled");
+			document.getElementById("button10").setAttribute("style","opacity:0.3;");
+			document.getElementById("div10norm").checked = false;
+			document.getElementById("div10tox").checked = false;
+			document.getElementById('div10').style.display = 'none';
+
+			document.getElementById('div11').style.display = 'none';
+
+			document.getElementById("button12").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div12').style.display = 'none';
+
+			document.getElementById("button13").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div13').style.display = 'none';
+
+			document.getElementById("button14").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div14').style.display = 'none';
+
+			document.getElementById("button15").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div15').style.display = 'none';
+
+			document.getElementById('div16').style.display = 'none';
+
+			document.getElementById("button17").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div17').style.display = 'none';
+
+			document.getElementById("button18").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button18").setAttribute("disabled","disabled");
+			document.getElementById("button18").setAttribute("style","opacity:0.3;");
+			document.getElementById("div18stable").checked = false;
+			document.getElementById("div18abnorm").checked = false;
+			document.getElementById('div18').style.display = 'none';
+
+			document.getElementById('div19').style.display = 'none';
+
+			document.getElementById("button20").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div20').style.display = 'none';
+
+			document.getElementById("button21").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button21").setAttribute("disabled","disabled");
+			document.getElementById("button21").setAttribute("style","opacity:0.3;");
+			document.getElementById("div21tox").checked = false;
+			document.getElementById("div21norm").checked = false;
+			document.getElementById('div21').style.display = 'none';
+
+			document.getElementById("button22").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div22').style.display = 'none';
+
+			document.getElementById("button23").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div23').style.display = 'none';
+
+			document.getElementById("button24").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button24").setAttribute("disabled","disabled");
+			document.getElementById("button24").setAttribute("style","opacity:0.3;");
+			document.getElementById("div24norm").checked = false;
+			document.getElementById("div24abn").checked = false;
+			document.getElementById('div24').style.display = 'none';
+
+			document.getElementById("button25").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div25').style.display = 'none';
+
+			document.getElementById("button26").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button26").setAttribute("disabled","disabled");
+			document.getElementById("button26").setAttribute("style","opacity:0.3;");
+			document.getElementById("div26norm").checked = false;
+			document.getElementById("div26abn").checked = false;
+			document.getElementById('div26').style.display = 'none';
+
+			document.getElementById('div27').style.display = 'none';
+
+			document.getElementById("button28").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div28').style.display = 'none';
+
+			document.getElementById("button29").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div29').style.display = 'none';
+
+			document.getElementById('div30').style.display = 'none';
+
+			document.getElementById("button31").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div31').style.display = 'none';
+
+			document.getElementById("button32").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div32').style.display = 'none';
+
+			document.getElementById("button33").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div33').style.display = 'none';
+
+			document.getElementById("button34").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div34').style.display = 'none';
+
+			document.getElementById("button35").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div35').style.display = 'none';
+
+			document.getElementById("button36").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div36').style.display = 'none';
+
+			document.getElementById('div37').style.display = 'none';
+			
+			} else {
+				if (document.querySelector('input#div4symp').checked) {
+					console.log("div5");
+					document.getElementById('div17').style.display = 'none';
+					document.getElementById('div5').style.display = 'block';
+
+				}
+				if (document.querySelector('input#div4asymp').checked) {
+					console.log("div17")
+					document.getElementById('div5').style.display = 'none';
+					document.getElementById('div17').style.display = 'block';
+				}
+			}
+		}
+
+	function show5(name) {
+		changeSign(name);
+		var image = document.getElementsByName(name)[0];
+		if (image.getAttribute('src') == "image/plus_btn.png") {
+			console.log("hiding5");
+			
+			document.getElementById("button6").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button6").setAttribute("disabled","disabled");
+			document.getElementById("button6").setAttribute("style","opacity:0.3;");
+			document.getElementById("div6incr").checked = false;
+			document.getElementById("div6stable").checked = false;
+			document.getElementById("div6improv").checked = false;
+			document.getElementById('div6').style.display = 'none';
+			
+			document.getElementById("button7").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div7').style.display = 'none';
+
+			document.getElementById('div7_1').style.display = 'none';
+
+			document.getElementById('div8').style.display = 'none';
+
+			document.getElementById("button9").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div9').style.display = 'none';
+
+			document.getElementById("button10").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button10").setAttribute("disabled","disabled");
+			document.getElementById("button10").setAttribute("style","opacity:0.3;");
+			document.getElementById("div10norm").checked = false;
+			document.getElementById("div10tox").checked = false;
+			document.getElementById('div10').style.display = 'none';
+
+			document.getElementById('div11').style.display = 'none';
+
+			document.getElementById("button12").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div12').style.display = 'none';
+
+			document.getElementById("button13").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div13').style.display = 'none';
+
+			document.getElementById("button14").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div14').style.display = 'none';
+
+			document.getElementById("button15").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div15').style.display = 'none';
+
+			document.getElementById('div16').style.display = 'none';
+
+			document.getElementById("button17").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div17').style.display = 'none';
+
+			document.getElementById("button18").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button18").setAttribute("disabled","disabled");
+			document.getElementById("button18").setAttribute("style","opacity:0.3;");
+			document.getElementById("div18stable").checked = false;
+			document.getElementById("div18abnorm").checked = false;
+			document.getElementById('div18').style.display = 'none';
+
+			document.getElementById('div19').style.display = 'none';
+
+			document.getElementById("button20").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div20').style.display = 'none';
+
+			document.getElementById("button21").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button21").setAttribute("disabled","disabled");
+			document.getElementById("button21").setAttribute("style","opacity:0.3;");
+			document.getElementById("div21tox").checked = false;
+			document.getElementById("div21norm").checked = false;
+			document.getElementById('div21').style.display = 'none';
+
+			document.getElementById("button22").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div22').style.display = 'none';
+
+			document.getElementById("button23").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div23').style.display = 'none';
+
+			document.getElementById("button24").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button24").setAttribute("disabled","disabled");
+			document.getElementById("button24").setAttribute("style","opacity:0.3;");
+			document.getElementById("div24norm").checked = false;
+			document.getElementById("div24abn").checked = false;
+			document.getElementById('div24').style.display = 'none';
+
+			document.getElementById("button25").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div25').style.display = 'none';
+
+			document.getElementById("button26").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button26").setAttribute("disabled","disabled");
+			document.getElementById("button26").setAttribute("style","opacity:0.3;");
+			document.getElementById("div26norm").checked = false;
+			document.getElementById("div26abn").checked = false;
+			document.getElementById('div26').style.display = 'none';
+
+			document.getElementById('div27').style.display = 'none';
+
+			document.getElementById("button28").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div28').style.display = 'none';
+
+			document.getElementById("button29").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div29').style.display = 'none';
+
+			document.getElementById('div30').style.display = 'none';
+
+			document.getElementById("button31").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div31').style.display = 'none';
+
+			document.getElementById("button32").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div32').style.display = 'none';
+
+			document.getElementById("button33").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div33').style.display = 'none';
+
+			document.getElementById("button34").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div34').style.display = 'none';
+
+			document.getElementById("button35").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div35').style.display = 'none';
+
+			document.getElementById("button36").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div36').style.display = 'none';
+
+			document.getElementById('div37').style.display = 'none';
+
+			} else {
+				document.getElementById('div6').style.display = 'block';
+			}
+		}
+		
+	function show6(name) {
+		changeSign(name);
+		var image = document.getElementsByName(name)[0];
+		if (image.getAttribute('src') == "image/plus_btn.png") {
+			console.log("hiding6");
+
+			document.getElementById("button7").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div7').style.display = 'none';
+
+			document.getElementById('div7_1').style.display = 'none';
+
+			document.getElementById('div8').style.display = 'none';
+
+			document.getElementById("button9").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div9').style.display = 'none';
+
+			document.getElementById("button10").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button10").setAttribute("disabled","disabled");
+			document.getElementById("button10").setAttribute("style","opacity:0.3;");
+			document.getElementById("div10norm").checked = false;
+			document.getElementById("div10tox").checked = false;
+			document.getElementById('div10').style.display = 'none';
+
+			document.getElementById('div11').style.display = 'none';
+
+			document.getElementById("button12").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div12').style.display = 'none';
+
+			document.getElementById("button13").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div13').style.display = 'none';
+
+			document.getElementById("button14").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div14').style.display = 'none';
+
+			document.getElementById("button15").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div15').style.display = 'none';
+
+			document.getElementById('div16').style.display = 'none';
+
+			document.getElementById("button17").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div17').style.display = 'none';
+
+			document.getElementById("button18").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button18").setAttribute("disabled","disabled");
+			document.getElementById("button18").setAttribute("style","opacity:0.3;");
+			document.getElementById("div18stable").checked = false;
+			document.getElementById("div18abnorm").checked = false;
+			document.getElementById('div18').style.display = 'none';
+
+			document.getElementById('div19').style.display = 'none';
+
+			document.getElementById("button20").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div20').style.display = 'none';
+
+			document.getElementById("button21").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button21").setAttribute("disabled","disabled");
+			document.getElementById("button21").setAttribute("style","opacity:0.3;");
+			document.getElementById("div21tox").checked = false;
+			document.getElementById("div21norm").checked = false;
+			document.getElementById('div21').style.display = 'none';
+
+			document.getElementById("button22").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div22').style.display = 'none';
+
+			document.getElementById("button23").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div23').style.display = 'none';
+
+			document.getElementById("button24").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button24").setAttribute("disabled","disabled");
+			document.getElementById("button24").setAttribute("style","opacity:0.3;");
+			document.getElementById("div24norm").checked = false;
+			document.getElementById("div24abn").checked = false;
+			document.getElementById('div24').style.display = 'none';
+
+			document.getElementById("button25").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div25').style.display = 'none';
+
+			document.getElementById("button26").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button26").setAttribute("disabled","disabled");
+			document.getElementById("button26").setAttribute("style","opacity:0.3;");
+			document.getElementById("div26norm").checked = false;
+			document.getElementById("div26abn").checked = false;
+			document.getElementById('div26').style.display = 'none';
+
+			document.getElementById('div27').style.display = 'none';
+
+			document.getElementById("button28").setAttribute("src","image/plus_btn.png");
+			document.getElementById('div28').style.display = 'none';
+
+			document.getElementById("button29").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div29').style.display = 'none';
+
+			document.getElementById('div30').style.display = 'none';
+
+			document.getElementById("button31").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div31').style.display = 'none';
+
+			document.getElementById("button32").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div32').style.display = 'none';
+
+			document.getElementById("button33").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div33').style.display = 'none';
+
+			document.getElementById("button34").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div34').style.display = 'none';
+
+			document.getElementById("button35").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div35').style.display = 'none';
+
+			document.getElementById("button36").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div36').style.display = 'none';
+
+			document.getElementById('div37').style.display = 'none';
+
+
+			} else {
+				if (document.querySelector('input#div6incr').checked) {
+					document.getElementById('div8').style.display = 'none';
+					document.getElementById('div9').style.display = 'none';
+					document.getElementById('div7').style.display = 'block';
+				}
+				if (document.querySelector('input#div6stable').checked) {
+					document.getElementById('div7').style.display = 'none';
+					document.getElementById('div9').style.display = 'none';
+					document.getElementById('div8').style.display = 'block';
+				}
+				if (document.querySelector('input#div6improv').checked) {
+					document.getElementById('div7').style.display = 'none';
+					document.getElementById('div8').style.display = 'none';
+					document.getElementById('div9').style.display = 'block';
+				}
+			}
+		}
+
+	function show7(name) {
+		changeSign(name);
+		var image = document.getElementsByName(name)[0];
+		if (image.getAttribute('src') == "image/plus_btn.png") {
+			console.log("hiding7");
+			
+			document.getElementById('div7_1').style.display = 'none';
+
+			document.getElementById('div8').style.display = 'none';
+
+			document.getElementById("button9").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div9').style.display = 'none';
+
+			document.getElementById("button10").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button10").setAttribute("disabled","disabled");
+			document.getElementById("button10").setAttribute("style","opacity:0.3;");
+			document.getElementById("div10norm").checked = false;
+			document.getElementById("div10tox").checked = false;
+			document.getElementById('div10').style.display = 'none';
+
+			document.getElementById('div11').style.display = 'none';
+
+			document.getElementById("button12").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div12').style.display = 'none';
+
+			document.getElementById("button13").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div13').style.display = 'none';
+
+			document.getElementById("button14").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div14').style.display = 'none';
+
+			document.getElementById("button15").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div15').style.display = 'none';
+
+			document.getElementById('div16').style.display = 'none';
+
+			document.getElementById("button17").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div17').style.display = 'none';
+
+			document.getElementById("button18").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button18").setAttribute("disabled","disabled");
+			document.getElementById("button18").setAttribute("style","opacity:0.3;");
+			document.getElementById("div18stable").checked = false;
+			document.getElementById("div18abnorm").checked = false;
+			document.getElementById('div18').style.display = 'none';
+
+			document.getElementById('div19').style.display = 'none';
+
+			document.getElementById("button20").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div20').style.display = 'none';
+
+			document.getElementById("button21").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button21").setAttribute("disabled","disabled");
+			document.getElementById("button21").setAttribute("style","opacity:0.3;");
+			document.getElementById("div21tox").checked = false;
+			document.getElementById("div21norm").checked = false;
+			document.getElementById('div21').style.display = 'none';
+
+			document.getElementById("button22").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div22').style.display = 'none';
+
+			document.getElementById("button23").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div23').style.display = 'none';
+
+			document.getElementById("button24").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button24").setAttribute("disabled","disabled");
+			document.getElementById("button24").setAttribute("style","opacity:0.3;");
+			document.getElementById("div24norm").checked = false;
+			document.getElementById("div24abn").checked = false;
+			document.getElementById('div24').style.display = 'none';
+
+			document.getElementById("button25").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div25').style.display = 'none';
+
+			document.getElementById("button26").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button26").setAttribute("disabled","disabled");
+			document.getElementById("button26").setAttribute("style","opacity:0.3;");
+			document.getElementById("div26norm").checked = false;
+			document.getElementById("div26abn").checked = false;
+			document.getElementById('div26').style.display = 'none';
+
+			document.getElementById('div27').style.display = 'none';
+
+			document.getElementById("button28").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div28').style.display = 'none';
+
+			document.getElementById("button29").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div29').style.display = 'none';
+
+			document.getElementById('div30').style.display = 'none';
+
+			document.getElementById("button31").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div31').style.display = 'none';
+
+			document.getElementById("button32").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div32').style.display = 'none';
+
+			document.getElementById("button33").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div33').style.display = 'none';
+
+			document.getElementById("button34").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div34').style.display = 'none';
+
+			document.getElementById("button35").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div35').style.display = 'none';
+
+			document.getElementById("button36").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div36').style.display = 'none';
+
+			document.getElementById('div37').style.display = 'none';
+
+			} else {
+				document.getElementById('div7_1').style.display = 'block';
+			}
+		}
+		
+	function show9(name) {
+		changeSign(name);
+		var image = document.getElementsByName(name)[0];
+		if (image.getAttribute('src') == "image/plus_btn.png") {
+			console.log("hiding9");
+
+			document.getElementById("button10").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button10").setAttribute("disabled","disabled");
+			document.getElementById("button10").setAttribute("style","opacity:0.3;");
+			document.getElementById("div10norm").checked = false;
+			document.getElementById("div10tox").checked = false;
+			document.getElementById('div10').style.display = 'none';
+
+			document.getElementById('div11').style.display = 'none';
+
+			document.getElementById("button12").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div12').style.display = 'none';
+
+			document.getElementById("button13").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div13').style.display = 'none';
+
+			document.getElementById("button14").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div14').style.display = 'none';
+
+			document.getElementById("button15").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div15').style.display = 'none';
+
+			document.getElementById('div16').style.display = 'none';
+
+			document.getElementById("button17").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div17').style.display = 'none';
+
+			document.getElementById("button18").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button18").setAttribute("disabled","disabled");
+			document.getElementById("button18").setAttribute("style","opacity:0.3;");
+			document.getElementById("div18stable").checked = false;
+			document.getElementById("div18abnorm").checked = false;
+			document.getElementById('div18').style.display = 'none';
+
+			document.getElementById('div19').style.display = 'none';
+
+			document.getElementById("button20").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div20').style.display = 'none';
+
+			document.getElementById("button21").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button21").setAttribute("disabled","disabled");
+			document.getElementById("button21").setAttribute("style","opacity:0.3;");
+			document.getElementById("div21tox").checked = false;
+			document.getElementById("div21norm").checked = false;
+			document.getElementById('div21').style.display = 'none';
+
+			document.getElementById("button22").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div22').style.display = 'none';
+
+			document.getElementById("button23").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div23').style.display = 'none';
+
+			document.getElementById("button24").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button24").setAttribute("disabled","disabled");
+			document.getElementById("button24").setAttribute("style","opacity:0.3;");
+			document.getElementById("div24norm").checked = false;
+			document.getElementById("div24abn").checked = false;
+			document.getElementById('div24').style.display = 'none';
+
+			document.getElementById("button25").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div25').style.display = 'none';
+
+			document.getElementById("button26").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button26").setAttribute("disabled","disabled");
+			document.getElementById("button26").setAttribute("style","opacity:0.3;");
+			document.getElementById("div26norm").checked = false;
+			document.getElementById("div26abn").checked = false;
+			document.getElementById('div26').style.display = 'none';
+
+			document.getElementById('div27').style.display = 'none';
+
+			document.getElementById("button28").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div28').style.display = 'none';
+
+			document.getElementById("button29").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div29').style.display = 'none';
+
+			document.getElementById('div30').style.display = 'none';
+
+			document.getElementById("button31").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div31').style.display = 'none';
+
+			document.getElementById("button32").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div32').style.display = 'none';
+
+			document.getElementById("button33").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div33').style.display = 'none';
+
+			document.getElementById("button34").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div34').style.display = 'none';
+
+			document.getElementById("button35").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div35').style.display = 'none';
+
+			document.getElementById("button36").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div36').style.display = 'none';
+
+			document.getElementById('div37').style.display = 'none';
+
+			} else {
+				document.getElementById('div10').style.display = 'block';
+			}
+		}
+		
+	function show10(name) {
+		changeSign(name);
+		var image = document.getElementsByName(name)[0];
+		if (image.getAttribute('src') == "image/plus_btn.png") {
+			console.log("hiding10");
+			
+			document.getElementById('div11').style.display = 'none';
+
+			document.getElementById("button12").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div12').style.display = 'none';
+
+			document.getElementById("button13").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div13').style.display = 'none';
+
+			document.getElementById("button14").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div14').style.display = 'none';
+
+			document.getElementById("button15").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div15').style.display = 'none';
+
+			document.getElementById('div16').style.display = 'none';
+
+			document.getElementById("button17").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div17').style.display = 'none';
+
+			document.getElementById("button18").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button18").setAttribute("disabled","disabled");
+			document.getElementById("button18").setAttribute("style","opacity:0.3;");
+			document.getElementById("div18stable").checked = false;
+			document.getElementById("div18abnorm").checked = false;
+			document.getElementById('div18').style.display = 'none';
+
+			document.getElementById('div19').style.display = 'none';
+
+			document.getElementById("button20").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div20').style.display = 'none';
+
+			document.getElementById("button21").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button21").setAttribute("disabled","disabled");
+			document.getElementById("button21").setAttribute("style","opacity:0.3;");
+			document.getElementById("div21tox").checked = false;
+			document.getElementById("div21norm").checked = false;
+			document.getElementById('div21').style.display = 'none';
+
+			document.getElementById("button22").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div22').style.display = 'none';
+
+			document.getElementById("button23").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div23').style.display = 'none';
+
+			document.getElementById("button24").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button24").setAttribute("disabled","disabled");
+			document.getElementById("button24").setAttribute("style","opacity:0.3;");
+			document.getElementById("div24norm").checked = false;
+			document.getElementById("div24abn").checked = false;
+			document.getElementById('div24').style.display = 'none';
+
+			document.getElementById("button25").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div25').style.display = 'none';
+
+			document.getElementById("button26").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button26").setAttribute("disabled","disabled");
+			document.getElementById("button26").setAttribute("style","opacity:0.3;");
+			document.getElementById("div26norm").checked = false;
+			document.getElementById("div26abn").checked = false;
+			document.getElementById('div26').style.display = 'none';
+
+			document.getElementById('div27').style.display = 'none';
+
+			document.getElementById("button28").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div28').style.display = 'none';
+
+			document.getElementById("button29").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div29').style.display = 'none';
+
+			document.getElementById('div30').style.display = 'none';
+
+			document.getElementById("button31").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div31').style.display = 'none';
+
+			document.getElementById("button32").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div32').style.display = 'none';
+
+			document.getElementById("button33").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div33').style.display = 'none';
+
+			document.getElementById("button34").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div34').style.display = 'none';
+
+			document.getElementById("button35").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div35').style.display = 'none';
+
+			document.getElementById("button36").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div36').style.display = 'none';
+
+			document.getElementById('div37').style.display = 'none';
+
+			} else {
+				if (document.querySelector('input#div10norm').checked) {
+					console.log("div11");
+					document.getElementById('div12').style.display = 'none';
+					document.getElementById('div11').style.display = 'block';
+
+				}
+				if (document.querySelector('input#div10tox').checked) {
+					console.log("div12")
+					document.getElementById('div11').style.display = 'none';
+					document.getElementById('div12').style.display = 'block';
+				}
+			}
+		}
+		
+	function show12(name) {
+		changeSign(name);
+		var image = document.getElementsByName(name)[0];
+		if (image.getAttribute('src') == "image/plus_btn.png") {
+			console.log("hiding12");
+			
+			document.getElementById("button13").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div13').style.display = 'none';
+			
+			document.getElementById("button14").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div14').style.display = 'none';
+
+			document.getElementById("button15").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div15').style.display = 'none';
+
+			document.getElementById('div16').style.display = 'none';
+
+			document.getElementById("button17").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div17').style.display = 'none';
+
+			document.getElementById("button18").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button18").setAttribute("disabled","disabled");
+			document.getElementById("button18").setAttribute("style","opacity:0.3;");
+			document.getElementById("div18stable").checked = false;
+			document.getElementById("div18abnorm").checked = false;
+			document.getElementById('div18').style.display = 'none';
+
+			document.getElementById('div19').style.display = 'none';
+
+			document.getElementById("button20").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div20').style.display = 'none';
+
+			document.getElementById("button21").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button21").setAttribute("disabled","disabled");
+			document.getElementById("button21").setAttribute("style","opacity:0.3;");
+			document.getElementById("div21tox").checked = false;
+			document.getElementById("div21norm").checked = false;
+			document.getElementById('div21').style.display = 'none';
+
+			document.getElementById("button22").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div22').style.display = 'none';
+
+			document.getElementById("button23").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div23').style.display = 'none';
+
+			document.getElementById("button24").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button24").setAttribute("disabled","disabled");
+			document.getElementById("button24").setAttribute("style","opacity:0.3;");
+			document.getElementById("div24norm").checked = false;
+			document.getElementById("div24abn").checked = false;
+			document.getElementById('div24').style.display = 'none';
+
+			document.getElementById("button25").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div25').style.display = 'none';
+
+			document.getElementById("button26").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button26").setAttribute("disabled","disabled");
+			document.getElementById("button26").setAttribute("style","opacity:0.3;");
+			document.getElementById("div26norm").checked = false;
+			document.getElementById("div26abn").checked = false;
+			document.getElementById('div26').style.display = 'none';
+
+			document.getElementById('div27').style.display = 'none';
+
+			document.getElementById("button28").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div28').style.display = 'none';
+
+			document.getElementById("button29").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div29').style.display = 'none';
+
+			document.getElementById('div30').style.display = 'none';
+
+			document.getElementById("button31").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div31').style.display = 'none';
+
+			document.getElementById("button32").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div32').style.display = 'none';
+
+			document.getElementById("button33").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div33').style.display = 'none';
+
+			document.getElementById("button34").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div34').style.display = 'none';
+
+			document.getElementById("button35").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div35').style.display = 'none';
+
+			document.getElementById("button36").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div36').style.display = 'none';
+
+			document.getElementById('div37').style.display = 'none';
+
+			} else {
+				document.getElementById('div13').style.display = 'block';
+			}
+		}
+		
+	function show13(name) {
+		changeSign(name);
+		var image = document.getElementsByName(name)[0];
+		if (image.getAttribute('src') == "image/plus_btn.png") {
+			console.log("hiding13");
+			
+			document.getElementById("button14").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div14').style.display = 'none';
+			
+			document.getElementById("button15").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div15').style.display = 'none';
+
+			document.getElementById('div16').style.display = 'none';
+
+			document.getElementById("button17").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div17').style.display = 'none';
+
+			document.getElementById("button18").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button18").setAttribute("disabled","disabled");
+			document.getElementById("button18").setAttribute("style","opacity:0.3;");
+			document.getElementById("div18stable").checked = false;
+			document.getElementById("div18abnorm").checked = false;
+			document.getElementById('div18').style.display = 'none';
+
+			document.getElementById('div19').style.display = 'none';
+
+			document.getElementById("button20").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div20').style.display = 'none';
+
+			document.getElementById("button21").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button21").setAttribute("disabled","disabled");
+			document.getElementById("button21").setAttribute("style","opacity:0.3;");
+			document.getElementById("div21tox").checked = false;
+			document.getElementById("div21norm").checked = false;
+			document.getElementById('div21').style.display = 'none';
+
+			document.getElementById("button22").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div22').style.display = 'none';
+
+			document.getElementById("button23").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div23').style.display = 'none';
+
+			document.getElementById("button24").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button24").setAttribute("disabled","disabled");
+			document.getElementById("button24").setAttribute("style","opacity:0.3;");
+			document.getElementById("div24norm").checked = false;
+			document.getElementById("div24abn").checked = false;
+			document.getElementById('div24').style.display = 'none';
+
+			document.getElementById("button25").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div25').style.display = 'none';
+
+			document.getElementById("button26").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button26").setAttribute("disabled","disabled");
+			document.getElementById("button26").setAttribute("style","opacity:0.3;");
+			document.getElementById("div26norm").checked = false;
+			document.getElementById("div26abn").checked = false;
+			document.getElementById('div26').style.display = 'none';
+
+			document.getElementById('div27').style.display = 'none';
+
+			document.getElementById("button28").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div28').style.display = 'none';
+
+			document.getElementById("button29").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div29').style.display = 'none';
+
+			document.getElementById('div30').style.display = 'none';
+
+			document.getElementById("button31").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div31').style.display = 'none';
+
+			document.getElementById("button32").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div32').style.display = 'none';
+
+			document.getElementById("button33").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div33').style.display = 'none';
+
+			document.getElementById("button34").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div34').style.display = 'none';
+
+			document.getElementById("button35").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div35').style.display = 'none';
+
+			document.getElementById("button36").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div36').style.display = 'none';
+
+			document.getElementById('div37').style.display = 'none';
+
+			} else {
+				document.getElementById('div14').style.display = 'block';
+			}
+		}
+		
+	function show14(name) {
+		changeSign(name);
+		var image = document.getElementsByName(name)[0];
+		if (image.getAttribute('src') == "image/plus_btn.png") {
+			console.log("hiding14");
+			
+			document.getElementById("button15").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div15').style.display = 'none';
+			
+			document.getElementById('div16').style.display = 'none';
+
+			document.getElementById("button17").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div17').style.display = 'none';
+
+			document.getElementById("button18").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button18").setAttribute("disabled","disabled");
+			document.getElementById("button18").setAttribute("style","opacity:0.3;");
+			document.getElementById("div18stable").checked = false;
+			document.getElementById("div18abnorm").checked = false;
+			document.getElementById('div18').style.display = 'none';
+
+			document.getElementById('div19').style.display = 'none';
+
+			document.getElementById("button20").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div20').style.display = 'none';
+
+			document.getElementById("button21").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button21").setAttribute("disabled","disabled");
+			document.getElementById("button21").setAttribute("style","opacity:0.3;");
+			document.getElementById("div21tox").checked = false;
+			document.getElementById("div21norm").checked = false;
+			document.getElementById('div21').style.display = 'none';
+
+			document.getElementById("button22").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div22').style.display = 'none';
+
+			document.getElementById("button23").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div23').style.display = 'none';
+
+			document.getElementById("button24").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button24").setAttribute("disabled","disabled");
+			document.getElementById("button24").setAttribute("style","opacity:0.3;");
+			document.getElementById("div24norm").checked = false;
+			document.getElementById("div24abn").checked = false;
+			document.getElementById('div24').style.display = 'none';
+
+			document.getElementById("button25").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div25').style.display = 'none';
+
+			document.getElementById("button26").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button26").setAttribute("disabled","disabled");
+			document.getElementById("button26").setAttribute("style","opacity:0.3;");
+			document.getElementById("div26norm").checked = false;
+			document.getElementById("div26abn").checked = false;
+			document.getElementById('div26').style.display = 'none';
+
+			document.getElementById('div27').style.display = 'none';
+
+			document.getElementById("button28").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div28').style.display = 'none';
+
+			document.getElementById("button29").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div29').style.display = 'none';
+
+			document.getElementById('div30').style.display = 'none';
+
+			document.getElementById("button31").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div31').style.display = 'none';
+
+			document.getElementById("button32").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div32').style.display = 'none';
+
+			document.getElementById("button33").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div33').style.display = 'none';
+
+			document.getElementById("button34").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div34').style.display = 'none';
+
+			document.getElementById("button35").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div35').style.display = 'none';
+
+			document.getElementById("button36").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div36').style.display = 'none';
+
+			document.getElementById('div37').style.display = 'none';
+
+			} else {
+				document.getElementById('div15').style.display = 'block';
+			}
+		}
+		
+	function show15(name) {
+		changeSign(name);
+		var image = document.getElementsByName(name)[0];
+		if (image.getAttribute('src') == "image/plus_btn.png") {
+			console.log("hiding15");
+			
+			document.getElementById('div16').style.display = 'none';
+			
+			document.getElementById("button17").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div17').style.display = 'none';
+
+			document.getElementById("button18").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button18").setAttribute("disabled","disabled");
+			document.getElementById("button18").setAttribute("style","opacity:0.3;");
+			document.getElementById("div18stable").checked = false;
+			document.getElementById("div18abnorm").checked = false;
+			document.getElementById('div18').style.display = 'none';
+
+			document.getElementById('div19').style.display = 'none';
+
+			document.getElementById("button20").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div20').style.display = 'none';
+
+			document.getElementById("button21").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button21").setAttribute("disabled","disabled");
+			document.getElementById("button21").setAttribute("style","opacity:0.3;");
+			document.getElementById("div21tox").checked = false;
+			document.getElementById("div21norm").checked = false;
+			document.getElementById('div21').style.display = 'none';
+
+			document.getElementById("button22").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div22').style.display = 'none';
+
+			document.getElementById("button23").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div23').style.display = 'none';
+
+			document.getElementById("button24").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button24").setAttribute("disabled","disabled");
+			document.getElementById("button24").setAttribute("style","opacity:0.3;");
+			document.getElementById("div24norm").checked = false;
+			document.getElementById("div24abn").checked = false;
+			document.getElementById('div24').style.display = 'none';
+
+			document.getElementById("button25").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div25').style.display = 'none';
+
+			document.getElementById("button26").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button26").setAttribute("disabled","disabled");
+			document.getElementById("button26").setAttribute("style","opacity:0.3;");
+			document.getElementById("div26norm").checked = false;
+			document.getElementById("div26abn").checked = false;
+			document.getElementById('div26').style.display = 'none';
+
+			document.getElementById('div27').style.display = 'none';
+
+			document.getElementById("button28").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div28').style.display = 'none';
+
+			document.getElementById("button29").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div29').style.display = 'none';
+
+			document.getElementById('div30').style.display = 'none';
+
+			document.getElementById("button31").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div31').style.display = 'none';
+
+			document.getElementById("button32").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div32').style.display = 'none';
+
+			document.getElementById("button33").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div33').style.display = 'none';
+
+			document.getElementById("button34").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div34').style.display = 'none';
+
+			document.getElementById("button35").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div35').style.display = 'none';
+
+			document.getElementById("button36").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div36').style.display = 'none';
+
+			document.getElementById('div37').style.display = 'none';
+			
+			} else {
+				document.getElementById('div16').style.display = 'block';
+			}
+		}
+		
+		
+	function show17(name) {
+		changeSign(name);
+		var image = document.getElementsByName(name)[0];
+		if (image.getAttribute('src') == "image/plus_btn.png") {
+			console.log("hiding17");
+
+			document.getElementById("button18").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button18").setAttribute("disabled","disabled");
+			document.getElementById("button18").setAttribute("style","opacity:0.3;");
+			document.getElementById("div18stable").checked = false;
+			document.getElementById("div18abnorm").checked = false;
+			document.getElementById('div18').style.display = 'none';
+			
+			document.getElementById('div19').style.display = 'none';
+
+			document.getElementById("button20").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div20').style.display = 'none';
+
+			document.getElementById("button21").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button21").setAttribute("disabled","disabled");
+			document.getElementById("button21").setAttribute("style","opacity:0.3;");
+			document.getElementById("div21tox").checked = false;
+			document.getElementById("div21norm").checked = false;
+			document.getElementById('div21').style.display = 'none';
+
+			document.getElementById("button22").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div22').style.display = 'none';
+
+			document.getElementById("button23").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div23').style.display = 'none';
+
+			document.getElementById("button24").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button24").setAttribute("disabled","disabled");
+			document.getElementById("button24").setAttribute("style","opacity:0.3;");
+			document.getElementById("div24norm").checked = false;
+			document.getElementById("div24abn").checked = false;
+			document.getElementById('div24').style.display = 'none';
+
+			document.getElementById("button25").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div25').style.display = 'none';
+
+			document.getElementById("button26").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button26").setAttribute("disabled","disabled");
+			document.getElementById("button26").setAttribute("style","opacity:0.3;");
+			document.getElementById("div26norm").checked = false;
+			document.getElementById("div26abn").checked = false;
+			document.getElementById('div26').style.display = 'none';
+
+			document.getElementById('div27').style.display = 'none';
+
+			document.getElementById("button28").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div28').style.display = 'none';
+
+			document.getElementById("button29").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div29').style.display = 'none';
+
+			document.getElementById('div30').style.display = 'none';
+
+			document.getElementById("button31").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div31').style.display = 'none';
+
+			document.getElementById("button32").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div32').style.display = 'none';
+
+			document.getElementById("button33").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div33').style.display = 'none';
+
+			document.getElementById("button34").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div34').style.display = 'none';
+
+			document.getElementById("button35").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div35').style.display = 'none';
+
+			document.getElementById("button36").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div36').style.display = 'none';
+
+			document.getElementById('div37').style.display = 'none';
+		
+			} else {
+				document.getElementById('div18').style.display = 'block';
+			}
+		}
+		
+	function show18(name) {
+		changeSign(name);
+		var image = document.getElementsByName(name)[0];
+		if (image.getAttribute('src') == "image/plus_btn.png") {
+			console.log("hiding18");
+			
+			document.getElementById('div19').style.display = 'none';
+
+			document.getElementById("button20").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div20').style.display = 'none';
+
+			document.getElementById("button21").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button21").setAttribute("disabled","disabled");
+			document.getElementById("button21").setAttribute("style","opacity:0.3;");
+			document.getElementById("div21tox").checked = false;
+			document.getElementById("div21norm").checked = false;
+			document.getElementById('div21').style.display = 'none';
+
+			document.getElementById("button22").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div22').style.display = 'none';
+
+			document.getElementById("button23").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div23').style.display = 'none';
+
+			document.getElementById("button24").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button24").setAttribute("disabled","disabled");
+			document.getElementById("button24").setAttribute("style","opacity:0.3;");
+			document.getElementById("div24norm").checked = false;
+			document.getElementById("div24abn").checked = false;
+			document.getElementById('div24').style.display = 'none';
+
+			document.getElementById("button25").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div25').style.display = 'none';
+
+			document.getElementById("button26").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button26").setAttribute("disabled","disabled");
+			document.getElementById("button26").setAttribute("style","opacity:0.3;");
+			document.getElementById("div26norm").checked = false;
+			document.getElementById("div26abn").checked = false;
+			document.getElementById('div26').style.display = 'none';
+
+			document.getElementById('div27').style.display = 'none';
+
+			document.getElementById("button28").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div28').style.display = 'none';
+
+			document.getElementById("button29").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div29').style.display = 'none';
+
+			document.getElementById('div30').style.display = 'none';
+
+			document.getElementById("button31").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div31').style.display = 'none';
+
+			document.getElementById("button32").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div32').style.display = 'none';
+
+			document.getElementById("button33").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div33').style.display = 'none';
+
+			document.getElementById("button34").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div34').style.display = 'none';
+
+			document.getElementById("button35").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div35').style.display = 'none';
+
+			document.getElementById("button36").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div36').style.display = 'none';
+
+			document.getElementById('div37').style.display = 'none';
+
+			
+			} else {
+				if (document.querySelector('input#div18stable').checked) {
+					console.log("div19");
+					document.getElementById('div22').style.display = 'none';
+					document.getElementById('div19').style.display = 'block';
+
+				}
+				if (document.querySelector('input#div18abnorm').checked) {
+					console.log("div22")
+					document.getElementById('div19').style.display = 'none';
+					document.getElementById('div22').style.display = 'block';
+				}
+			}
+		}
+		
+	function show20(name) {
+		changeSign(name);
+		var image = document.getElementsByName(name)[0];
+		if (image.getAttribute('src') == "image/plus_btn.png") {
+			console.log("hiding20");
+			
+			document.getElementById("button21").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button21").setAttribute("disabled","disabled");
+			document.getElementById("button21").setAttribute("style","opacity:0.3;");
+			document.getElementById("div21tox").checked = false;
+			document.getElementById("div21norm").checked = false;
+			document.getElementById('div21').style.display = 'none';
+
+			document.getElementById("button22").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div22').style.display = 'none';
+
+			document.getElementById("button23").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div23').style.display = 'none';
+
+			document.getElementById("button24").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button24").setAttribute("disabled","disabled");
+			document.getElementById("button24").setAttribute("style","opacity:0.3;");
+			document.getElementById("div24norm").checked = false;
+			document.getElementById("div24abn").checked = false;
+			document.getElementById('div24').style.display = 'none';
+
+			document.getElementById("button25").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div25').style.display = 'none';
+
+			document.getElementById("button26").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button26").setAttribute("disabled","disabled");
+			document.getElementById("button26").setAttribute("style","opacity:0.3;");
+			document.getElementById("div26norm").checked = false;
+			document.getElementById("div26abn").checked = false;
+			document.getElementById('div26').style.display = 'none';
+
+			document.getElementById('div27').style.display = 'none';
+
+			document.getElementById("button28").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div28').style.display = 'none';
+
+			document.getElementById("button29").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div29').style.display = 'none';
+
+			document.getElementById('div30').style.display = 'none';
+
+			document.getElementById("button31").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div31').style.display = 'none';
+
+			document.getElementById("button32").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div32').style.display = 'none';
+
+			document.getElementById("button33").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div33').style.display = 'none';
+
+			document.getElementById("button34").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div34').style.display = 'none';
+
+			document.getElementById("button35").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div35').style.display = 'none';
+
+			document.getElementById("button36").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div36').style.display = 'none';
+
+			document.getElementById('div37').style.display = 'none';
+
+			} else {
+				document.getElementById('div21').style.display = 'block';
+			}
+		}
+		
+	function show21(name) {
+		changeSign(name);
+		var image = document.getElementsByName(name)[0];
+		if (image.getAttribute('src') == "image/plus_btn.png") {
+			console.log("hiding21");
+			
+			document.getElementById("button22").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div22').style.display = 'none';
+
+			document.getElementById("button23").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div23').style.display = 'none';
+
+			document.getElementById("button24").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button24").setAttribute("disabled","disabled");
+			document.getElementById("button24").setAttribute("style","opacity:0.3;");
+			document.getElementById("div24norm").checked = false;
+			document.getElementById("div24abn").checked = false;
+			document.getElementById('div24').style.display = 'none';
+
+			document.getElementById("button25").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div25').style.display = 'none';
+
+			document.getElementById("button26").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button26").setAttribute("disabled","disabled");
+			document.getElementById("button26").setAttribute("style","opacity:0.3;");
+			document.getElementById("div26norm").checked = false;
+			document.getElementById("div26abn").checked = false;
+			document.getElementById('div26').style.display = 'none';
+
+			document.getElementById('div27').style.display = 'none';
+
+			document.getElementById("button28").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div28').style.display = 'none';
+
+			document.getElementById("button29").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div29').style.display = 'none';
+
+			document.getElementById('div30').style.display = 'none';
+
+			document.getElementById("button31").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div31').style.display = 'none';
+
+			document.getElementById("button32").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div32').style.display = 'none';
+
+			document.getElementById("button33").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div33').style.display = 'none';
+
+			document.getElementById("button34").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div34').style.display = 'none';
+
+			document.getElementById("button35").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div35').style.display = 'none';
+
+			document.getElementById("button36").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div36').style.display = 'none';
+
+			document.getElementById('div37').style.display = 'none';
+
+
+			} else {
+				if (document.querySelector('input#div21tox').checked) {
+					console.log("div22");
+					document.getElementById('div37').style.display = 'none';
+					document.getElementById('div22').style.display = 'block';
+
+				}
+				if (document.querySelector('input#div21norm').checked) {
+					console.log("div37")
+					document.getElementById('div22').style.display = 'none';
+					document.getElementById('div37').style.display = 'block';
+				}
+			}
+		}
+		
+	function show22(name) {
+		changeSign(name);
+		var image = document.getElementsByName(name)[0];
+		if (image.getAttribute('src') == "image/plus_btn.png") {
+			console.log("hiding22");
+			
+			document.getElementById("button23").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div23').style.display = 'none';
+
+			document.getElementById("button24").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button24").setAttribute("disabled","disabled");
+			document.getElementById("button24").setAttribute("style","opacity:0.3;");
+			document.getElementById("div24norm").checked = false;
+			document.getElementById("div24abn").checked = false;
+			document.getElementById('div24').style.display = 'none';
+
+			document.getElementById("button25").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div25').style.display = 'none';
+
+			document.getElementById("button26").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button26").setAttribute("disabled","disabled");
+			document.getElementById("button26").setAttribute("style","opacity:0.3;");
+			document.getElementById("div26norm").checked = false;
+			document.getElementById("div26abn").checked = false;
+			document.getElementById('div26').style.display = 'none';
+
+			document.getElementById('div27').style.display = 'none';
+
+			document.getElementById("button28").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div28').style.display = 'none';
+
+			document.getElementById("button29").setAttribute("src","image/plus_btn.png");
+			document.getElementById('div29').style.display = 'none';
+
+			document.getElementById('div30').style.display = 'none';
+
+			document.getElementById("button31").setAttribute("src","image/plus_btn.png");
+			document.getElementById('div31').style.display = 'none';
+
+			document.getElementById("button32").setAttribute("src","image/plus_btn.png");
+			document.getElementById('div32').style.display = 'none';
+
+			document.getElementById("button33").setAttribute("src","image/plus_btn.png");
+			document.getElementById('div33').style.display = 'none';
+
+			document.getElementById("button34").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div34').style.display = 'none';
+
+			document.getElementById("button35").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div35').style.display = 'none';
+
+			document.getElementById("button36").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div36').style.display = 'none';
+
+			document.getElementById('div37').style.display = 'none';
+
+			} else {
+				document.getElementById('div23').style.display = 'block';
+			}
+		}
+		
+	function show23(name) {
+		changeSign(name);
+		var image = document.getElementsByName(name)[0];
+		if (image.getAttribute('src') == "image/plus_btn.png") {
+			console.log("hiding23");
+			
+			document.getElementById("button24").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button24").setAttribute("disabled","disabled");
+			document.getElementById("button24").setAttribute("style","opacity:0.3;");
+			document.getElementById("div24norm").checked = false;
+			document.getElementById("div24abn").checked = false;
+			document.getElementById('div24').style.display = 'none';
+
+			document.getElementById("button25").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div25').style.display = 'none';
+
+			document.getElementById("button26").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button26").setAttribute("disabled","disabled");
+			document.getElementById("button26").setAttribute("style","opacity:0.3;");
+			document.getElementById("div26norm").checked = false;
+			document.getElementById("div26abn").checked = false;
+			document.getElementById('div26').style.display = 'none';
+
+			document.getElementById('div27').style.display = 'none';
+
+			document.getElementById("button28").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div28').style.display = 'none';
+
+			document.getElementById("button29").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div29').style.display = 'none';
+
+			document.getElementById('div30').style.display = 'none';
+
+			document.getElementById("button31").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div31').style.display = 'none';
+
+			document.getElementById("button32").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div32').style.display = 'none';
+
+			document.getElementById("button33").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div33').style.display = 'none';
+
+			document.getElementById("button34").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div34').style.display = 'none';
+
+			document.getElementById("button35").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div35').style.display = 'none';
+
+			document.getElementById("button36").setAttribute("src","image/plus_btn.png");
+			document.getElementById('div36').style.display = 'none';
+
+			document.getElementById('div37').style.display = 'none';
+
+			
+			} else {
+				document.getElementById('div24').style.display = 'block';
+			}
+		}
+		
+	function show24(name) {
+		changeSign(name);
+		var image = document.getElementsByName(name)[0];
+		if (image.getAttribute('src') == "image/plus_btn.png") {
+			console.log("hiding24");
+			
+			document.getElementById("button25").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div25').style.display = 'none';
+
+			document.getElementById("button26").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button26").setAttribute("disabled","disabled");
+			document.getElementById("button26").setAttribute("style","opacity:0.3;");
+			document.getElementById("div26norm").checked = false;
+			document.getElementById("div26abn").checked = false;
+			document.getElementById('div26').style.display = 'none';
+
+			document.getElementById('div27').style.display = 'none';
+
+			document.getElementById("button28").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div28').style.display = 'none';
+
+			document.getElementById("button29").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div29').style.display = 'none';
+
+			document.getElementById('div30').style.display = 'none';
+
+			document.getElementById("button31").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div31').style.display = 'none';
+
+			document.getElementById("button32").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div32').style.display = 'none';
+
+			document.getElementById("button33").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div33').style.display = 'none';
+
+			document.getElementById("button34").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div34').style.display = 'none';
+
+			document.getElementById("button35").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div35').style.display = 'none';
+
+			document.getElementById("button36").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div36').style.display = 'none';
+
+			document.getElementById('div37').style.display = 'none';
+
+			} else {
+				if (document.querySelector('input#div24norm').checked) {
+					console.log("div28");			document.getElementById("button25").setAttribute("src","image/plus_btn.png"); 
+					document.getElementById('div25').style.display = 'none';
+
+					document.getElementById("button26").setAttribute("src","image/plus_btn.png"); 
+					document.getElementById("button26").setAttribute("disabled","disabled");
+					document.getElementById("button26").setAttribute("style","opacity:0.3;");
+					document.getElementById("div26norm").checked = false;
+					document.getElementById("div26abn").checked = false;
+					document.getElementById('div26').style.display = 'none';
+
+					document.getElementById('div27').style.display = 'none';
+
+					document.getElementById("button28").setAttribute("src","image/plus_btn.png"); 
+					document.getElementById('div28').style.display = 'none';
+
+					document.getElementById("button29").setAttribute("src","image/plus_btn.png"); 
+					document.getElementById('div29').style.display = 'none';
+
+					document.getElementById('div30').style.display = 'none';
+
+					document.getElementById("button31").setAttribute("src","image/plus_btn.png"); 
+					document.getElementById('div31').style.display = 'none';
+
+					document.getElementById("button32").setAttribute("src","image/plus_btn.png"); 
+					document.getElementById('div32').style.display = 'none';
+
+					document.getElementById("button33").setAttribute("src","image/plus_btn.png"); 
+					document.getElementById('div33').style.display = 'none';
+
+					document.getElementById("button34").setAttribute("src","image/plus_btn.png"); 
+					document.getElementById('div34').style.display = 'none';
+
+					document.getElementById("button35").setAttribute("src","image/plus_btn.png"); 
+					document.getElementById('div35').style.display = 'none';
+
+					document.getElementById("button36").setAttribute("src","image/plus_btn.png"); 
+					document.getElementById('div36').style.display = 'none';
+
+					document.getElementById('div37').style.display = 'none';
+
+					document.getElementById('div25').style.display = 'none';
+					document.getElementById('div28').style.display = 'block';
+
+				}
+				if (document.querySelector('input#div24abn').checked) {
+					console.log("div25")
+					document.getElementById('div28').style.display = 'none';
+					document.getElementById('div25').style.display = 'block';
+				}
+			}
+		}
+		
+	function show25(name) {
+		changeSign(name);
+		var image = document.getElementsByName(name)[0];
+		if (image.getAttribute('src') == "image/plus_btn.png") {
+			console.log("hiding25");
+			
+			document.getElementById("button26").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById("button26").setAttribute("disabled","disabled");
+			document.getElementById("button26").setAttribute("style","opacity:0.3;");
+			document.getElementById("div26norm").checked = false;
+			document.getElementById("div26abn").checked = false;
+			document.getElementById('div26').style.display = 'none';
+
+			document.getElementById('div27').style.display = 'none';
+
+			document.getElementById("button28").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div28').style.display = 'none';
+
+			document.getElementById("button29").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div29').style.display = 'none';
+
+			document.getElementById('div30').style.display = 'none';
+
+			document.getElementById("button31").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div31').style.display = 'none';
+
+			document.getElementById("button32").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div32').style.display = 'none';
+
+			document.getElementById("button33").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div33').style.display = 'none';
+
+			document.getElementById("button34").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div34').style.display = 'none';
+
+			document.getElementById("button35").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div35').style.display = 'none';
+
+			document.getElementById("button36").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div36').style.display = 'none';
+
+			document.getElementById('div37').style.display = 'none';
+
+			} else {
+				document.getElementById('div26').style.display = 'block';
+			}
+		}
+		
+	function show26(name) {
+		changeSign(name);
+		var image = document.getElementsByName(name)[0];
+		if (image.getAttribute('src') == "image/plus_btn.png") {
+			console.log("hiding26");
+			
+			document.getElementById('div27').style.display = 'none';
+
+			document.getElementById("button28").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div28').style.display = 'none';
+
+			document.getElementById("button29").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div29').style.display = 'none';
+
+			document.getElementById('div30').style.display = 'none';
+
+			document.getElementById("button31").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div31').style.display = 'none';
+
+			document.getElementById("button32").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div32').style.display = 'none';
+
+			document.getElementById("button33").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div33').style.display = 'none';
+
+			document.getElementById("button34").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div34').style.display = 'none';
+
+			document.getElementById("button35").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div35').style.display = 'none';
+
+			document.getElementById("button36").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div36').style.display = 'none';
+
+			document.getElementById('div37').style.display = 'none';
+
+
+			} else {
+				if (document.querySelector('input#div26norm').checked) {
+					console.log("div27");
+					document.getElementById('div30').style.display = 'none';
+					document.getElementById('div27').style.display = 'block';
+
+				}
+				if (document.querySelector('input#div26abn').checked) {
+					console.log("div30")
+					document.getElementById('div27').style.display = 'none';
+					document.getElementById('div30').style.display = 'block';
+				}
+			}
+		}
+		
+	function show28(name) {
+		changeSign(name);
+		var image = document.getElementsByName(name)[0];
+		if (image.getAttribute('src') == "image/plus_btn.png") {
+			console.log("hiding28");
+			
+			document.getElementById("button29").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div29').style.display = 'none';
+
+			document.getElementById('div30').style.display = 'none';
+
+			document.getElementById("button31").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div31').style.display = 'none';
+
+			document.getElementById("button32").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div32').style.display = 'none';
+
+			document.getElementById("button33").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div33').style.display = 'none';
+
+			document.getElementById("button34").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div34').style.display = 'none';
+
+			document.getElementById("button35").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div35').style.display = 'none';
+
+			document.getElementById("button36").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div36').style.display = 'none';
+
+			document.getElementById('div37').style.display = 'none';
+
+			} else {
+				document.getElementById('div29').style.display = 'block';
+			}
+		}
+		
+	function show29(name) {
+		changeSign(name);
+		var image = document.getElementsByName(name)[0];
+		if (image.getAttribute('src') == "image/plus_btn.png") {
+			console.log("hiding29");
+
+			document.getElementById('div30').style.display = 'none';
+
+			document.getElementById("button31").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div31').style.display = 'none';
+
+			document.getElementById("button32").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div32').style.display = 'none';
+
+			document.getElementById("button33").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div33').style.display = 'none';
+
+			document.getElementById("button34").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div34').style.display = 'none';
+
+			document.getElementById("button35").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div35').style.display = 'none';
+
+			document.getElementById("button36").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div36').style.display = 'none';
+
+			document.getElementById('div37').style.display = 'none';
+
+			
+			} else {
+				if (document.querySelector('input#div29norm').checked) {
+					console.log("div30");
+					document.getElementById('div31').style.display = 'none';
+					document.getElementById('div30').style.display = 'block';
+
+				}
+				if (document.querySelector('input#div29abn').checked) {
+					console.log("div31")
+					document.getElementById('div30').style.display = 'none';
+					document.getElementById('div31').style.display = 'block';
+				}
+			}
+		}
+		
+	function show31(name) {
+		changeSign(name);
+		var image = document.getElementsByName(name)[0];
+		if (image.getAttribute('src') == "image/plus_btn.png") {
+			console.log("hiding31");
+			
+			document.getElementById("button32").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div32').style.display = 'none';
+
+			document.getElementById("button33").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div33').style.display = 'none';
+
+			document.getElementById("button34").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div34').style.display = 'none';
+
+			document.getElementById("button35").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div35').style.display = 'none';
+
+			document.getElementById("button36").setAttribute("src","image/plus_btn.png");
+			document.getElementById('div36').style.display = 'none';
+
+			document.getElementById('div37').style.display = 'none';
+
+
+			} else {
+				document.getElementById('div32').style.display = 'block';
+			}
+		}
+		
+	function show32(name) {
+		changeSign(name);
+		var image = document.getElementsByName(name)[0];
+		if (image.getAttribute('src') == "image/plus_btn.png") {
+			console.log("hiding32");
+			
+			document.getElementById("button33").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div33').style.display = 'none';
+
+			document.getElementById("button34").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div34').style.display = 'none';
+
+			document.getElementById("button35").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div35').style.display = 'none';
+
+			document.getElementById("button36").setAttribute("src","image/plus_btn.png");
+			document.getElementById('div36').style.display = 'none';
+
+			document.getElementById('div37').style.display = 'none';
+			} else {
+				document.getElementById('div33').style.display = 'block';
+			}
+		}
+		
+	function show33(name) {
+		changeSign(name);
+		var image = document.getElementsByName(name)[0];
+		if (image.getAttribute('src') == "image/plus_btn.png") {
+			console.log("hiding33");
+
+			document.getElementById("button32").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div32').style.display = 'none';
+
+			document.getElementById("button33").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div33').style.display = 'none';
+
+			document.getElementById("button34").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div34').style.display = 'none';
+
+			document.getElementById("button35").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div35').style.display = 'none';
+
+			document.getElementById("button36").setAttribute("src","image/plus_btn.png");
+			document.getElementById('div36').style.display = 'none';
+
+			document.getElementById('div37').style.display = 'none';
+			
+			document.getElementById("button38").setAttribute("src","image/plus_btn.png");
+			document.getElementById('div38').style.display = 'none';
+
+			} else {
+				document.getElementById('div38').style.display = 'block';
+			}
+		}
+		
+	function show34(name) {
+		changeSign(name);
+		var image = document.getElementsByName(name)[0];
+		if (image.getAttribute('src') == "image/plus_btn.png") {
+			console.log("hiding34");
+			
+			document.getElementById("button35").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div35').style.display = 'none';
+
+			document.getElementById("button36").setAttribute("src","image/plus_btn.png");
+			document.getElementById('div36').style.display = 'none';
+
+			document.getElementById('div37').style.display = 'none';
+			
+			} else {
+				document.getElementById('div35').style.display = 'block';
+			}
+		}
+
+	function show35(name) {
+		changeSign(name);
+		var image = document.getElementsByName(name)[0];
+		if (image.getAttribute('src') == "image/plus_btn.png") {
+			console.log("hiding35");
+			
+			document.getElementById("button36").setAttribute("src","image/plus_btn.png");
+			document.getElementById('div36').style.display = 'none';
+
+			document.getElementById('div37').style.display = 'none';
+			
+			} else {
+				document.getElementById('div36').style.display = 'block';
+			}
+		}		
+		
+	function show36(name) {
+		changeSign(name);
+		var image = document.getElementsByName(name)[0];
+		if (image.getAttribute('src') == "image/plus_btn.png") {
+			console.log("hiding36");
+			
+			document.getElementById('div37').style.display = 'none';
+			
+			} else {
+				document.getElementById('div37').style.display = 'block';
+			}
+		}
+	
+	function show38(name) {
+		changeSign(name);
+		var image = document.getElementsByName(name)[0];
+		if (image.getAttribute('src') == "image/plus_btn.png") {
+			console.log("hiding38");
+
+			document.getElementById('div30').style.display = 'none';
+
+			document.getElementById("button39").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div39').style.display = 'none';
+			
+			document.getElementById("button40").setAttribute("src","image/plus_btn.png"); 
+			document.getElementById('div40').style.display = 'none';
+
+
+			
+			} else {
+				if (document.querySelector('input#div38norm').checked) {
+					console.log("div38");
+					document.getElementById('div40').style.display = 'none';
+					document.getElementById('div39').style.display = 'block';
+
+				}
+				if (document.querySelector('input#div38abn').checked) {
+					console.log("div38")
+					document.getElementById('div39').style.display = 'none';
+					document.getElementById('div40').style.display = 'block';
+				}
+			}
+		}
+		
+	
+	function hide0(id) {
+		document.getElementById("button0").setAttribute("src","image/plus_btn.png");
+		
+		document.getElementById("button1").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById("button1").setAttribute("disabled","disabled");
+		document.getElementById("button1").setAttribute("style","opacity:0.3;");
+		document.getElementById("div1less3x").checked = false;
+		document.getElementById("div1more3x").checked = false;
+		document.getElementById("div1more5x").checked = false;
+		document.getElementById('div1').style.display = 'none';
+
+		document.getElementById("button2").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById("button2").setAttribute("disabled","disabled");
+		document.getElementById("button2").setAttribute("style","opacity:0.3;");
+		document.getElementById("div2symp").checked = false;
+		document.getElementById("div2asymp").checked = false;
+		document.getElementById('div2').style.display = 'none';
+
+		document.getElementById('div3').style.display = 'none';
+
+		document.getElementById("button4").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById("button4").setAttribute("disabled","disabled");
+		document.getElementById("button4").setAttribute("style","opacity:0.3;");
+		document.getElementById("div4symp").checked = false;
+		document.getElementById("div4asymp").checked = false;
+		document.getElementById('div4').style.display = 'none';
+
+		document.getElementById("button5").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div5').style.display = 'none';
+
+		document.getElementById("button6").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById("button6").setAttribute("disabled","disabled");
+		document.getElementById("button6").setAttribute("style","opacity:0.3;");
+		document.getElementById("div6incr").checked = false;
+		document.getElementById("div6stable").checked = false;
+		document.getElementById("div6improv").checked = false;
+		document.getElementById('div6').style.display = 'none';
+
+		document.getElementById("button7").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div7').style.display = 'none';
+
+		document.getElementById('div7_1').style.display = 'none';
+
+		document.getElementById('div8').style.display = 'none';
+
+		document.getElementById("button9").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div9').style.display = 'none';
+
+		document.getElementById("button10").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById("button10").setAttribute("disabled","disabled");
+		document.getElementById("button10").setAttribute("style","opacity:0.3;");
+		document.getElementById("div10norm").checked = false;
+		document.getElementById("div10tox").checked = false;
+		document.getElementById('div10').style.display = 'none';
+
+		document.getElementById('div11').style.display = 'none';
+
+		document.getElementById("button12").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div12').style.display = 'none';
+
+		document.getElementById("button13").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div13').style.display = 'none';
+
+		document.getElementById("button14").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div14').style.display = 'none';
+
+		document.getElementById("button15").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div15').style.display = 'none';
+
+		document.getElementById('div16').style.display = 'none';
+
+		document.getElementById("button17").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div17').style.display = 'none';
+
+		document.getElementById("button18").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById("button18").setAttribute("disabled","disabled");
+		document.getElementById("button18").setAttribute("style","opacity:0.3;");
+		document.getElementById("div18stable").checked = false;
+		document.getElementById("div18abnorm").checked = false;
+		document.getElementById('div18').style.display = 'none';
+
+		document.getElementById('div19').style.display = 'none';
+
+		document.getElementById("button20").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div20').style.display = 'none';
+
+		document.getElementById("button21").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById("button21").setAttribute("disabled","disabled");
+		document.getElementById("button21").setAttribute("style","opacity:0.3;");
+		document.getElementById("div21tox").checked = false;
+		document.getElementById("div21norm").checked = false;
+		document.getElementById('div21').style.display = 'none';
+
+		document.getElementById("button22").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div22').style.display = 'none';
+
+		document.getElementById("button23").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div23').style.display = 'none';
+
+		document.getElementById("button24").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById("button24").setAttribute("disabled","disabled");
+		document.getElementById("button24").setAttribute("style","opacity:0.3;");
+		document.getElementById("div24norm").checked = false;
+		document.getElementById("div24abn").checked = false;
+		document.getElementById('div24').style.display = 'none';
+
+		document.getElementById("button25").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div25').style.display = 'none';
+
+		document.getElementById("button26").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById("button26").setAttribute("disabled","disabled");
+		document.getElementById("button26").setAttribute("style","opacity:0.3;");
+		document.getElementById("div26norm").checked = false;
+		document.getElementById("div26abn").checked = false;
+		document.getElementById('div26').style.display = 'none';
+
+		document.getElementById('div27').style.display = 'none';
+
+		document.getElementById("button28").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div28').style.display = 'none';
+
+		document.getElementById("button29").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div29').style.display = 'none';
+
+		document.getElementById('div30').style.display = 'none';
+
+		document.getElementById("button31").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div31').style.display = 'none';
+
+		document.getElementById("button32").setAttribute("src","image/plus_btn.png");
+		document.getElementById('div32').style.display = 'none';
+
+		document.getElementById("button33").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div33').style.display = 'none';
+
+		document.getElementById("button34").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div34').style.display = 'none';
+
+		document.getElementById("button35").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div35').style.display = 'none';
+
+		document.getElementById("button36").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div36').style.display = 'none';
+
+		document.getElementById('div37').style.display = 'none';
+
+	}
+	
+	function hide1(id) {
+	
+		document.getElementById("button1").setAttribute("src","image/plus_btn.png"); 
+
+		document.getElementById("button2").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById("button2").setAttribute("disabled","disabled");
+		document.getElementById("button2").setAttribute("style","opacity:0.3;");
+		document.getElementById("div2symp").checked = false;
+		document.getElementById("div2asymp").checked = false;
+		document.getElementById('div2').style.display = 'none';
+
+		document.getElementById('div3').style.display = 'none';
+
+		document.getElementById("button4").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById("button4").setAttribute("disabled","disabled");
+		document.getElementById("button4").setAttribute("style","opacity:0.3;");
+		document.getElementById("div4symp").checked = false;
+		document.getElementById("div4asymp").checked = false;
+		document.getElementById('div4').style.display = 'none';
+
+		document.getElementById("button5").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div5').style.display = 'none';
+
+		document.getElementById("button6").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById("button6").setAttribute("disabled","disabled");
+		document.getElementById("button6").setAttribute("style","opacity:0.3;");
+		document.getElementById("div6incr").checked = false;
+		document.getElementById("div6stable").checked = false;
+		document.getElementById("div6improv").checked = false;
+		document.getElementById('div6').style.display = 'none';
+
+		document.getElementById("button7").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div7').style.display = 'none';
+
+		document.getElementById('div7_1').style.display = 'none';
+
+		document.getElementById('div8').style.display = 'none';
+
+		document.getElementById("button9").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div9').style.display = 'none';
+
+		document.getElementById("button10").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById("button10").setAttribute("disabled","disabled");
+		document.getElementById("button10").setAttribute("style","opacity:0.3;");
+		document.getElementById("div10norm").checked = false;
+		document.getElementById("div10tox").checked = false;
+		document.getElementById('div10').style.display = 'none';
+
+		document.getElementById('div11').style.display = 'none';
+
+		document.getElementById("button12").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div12').style.display = 'none';
+
+		document.getElementById("button13").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div13').style.display = 'none';
+
+		document.getElementById("button14").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div14').style.display = 'none';
+
+		document.getElementById("button15").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div15').style.display = 'none';
+
+		document.getElementById('div16').style.display = 'none';
+
+		document.getElementById("button17").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div17').style.display = 'none';
+
+		document.getElementById("button18").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById("button18").setAttribute("disabled","disabled");
+		document.getElementById("button18").setAttribute("style","opacity:0.3;");
+		document.getElementById("div18stable").checked = false;
+		document.getElementById("div18abnorm").checked = false;
+		document.getElementById('div18').style.display = 'none';
+
+		document.getElementById('div19').style.display = 'none';
+
+		document.getElementById("button20").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div20').style.display = 'none';
+
+		document.getElementById("button21").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById("button21").setAttribute("disabled","disabled");
+		document.getElementById("button21").setAttribute("style","opacity:0.3;");
+		document.getElementById("div21tox").checked = false;
+		document.getElementById("div21norm").checked = false;
+		document.getElementById('div21').style.display = 'none';
+
+		document.getElementById("button22").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div22').style.display = 'none';
+
+		document.getElementById("button23").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div23').style.display = 'none';
+
+		document.getElementById("button24").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById("button24").setAttribute("disabled","disabled");
+		document.getElementById("button24").setAttribute("style","opacity:0.3;");
+		document.getElementById("div24norm").checked = false;
+		document.getElementById("div24abn").checked = false;
+		document.getElementById('div24').style.display = 'none';
+
+		document.getElementById("button25").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div25').style.display = 'none';
+
+		document.getElementById("button26").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById("button26").setAttribute("disabled","disabled");
+		document.getElementById("button26").setAttribute("style","opacity:0.3;");
+		document.getElementById("div26norm").checked = false;
+		document.getElementById("div26abn").checked = false;
+		document.getElementById('div26').style.display = 'none';
+
+		document.getElementById('div27').style.display = 'none';
+
+		document.getElementById("button28").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div28').style.display = 'none';
+
+		document.getElementById("button29").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div29').style.display = 'none';
+
+		document.getElementById('div30').style.display = 'none';
+
+		document.getElementById("button31").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div31').style.display = 'none';
+
+		document.getElementById("button32").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div32').style.display = 'none';
+
+		document.getElementById("button33").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div33').style.display = 'none';
+
+		document.getElementById("button34").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div34').style.display = 'none';
+
+		document.getElementById("button35").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div35').style.display = 'none';
+
+		document.getElementById("button36").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div36').style.display = 'none';
+
+		document.getElementById('div37').style.display = 'none';
+
+	}
+	
+	function hide2(id) {
+		
+		document.getElementById("button2").setAttribute("src","image/plus_btn.png"); 
+		
+		document.getElementById('div3').style.display = 'none';
+
+		document.getElementById("button4").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById("button4").setAttribute("disabled","disabled");
+		document.getElementById("button4").setAttribute("style","opacity:0.3;");
+		document.getElementById("div4symp").checked = false;
+		document.getElementById("div4asymp").checked = false;
+		document.getElementById('div4').style.display = 'none';
+
+		document.getElementById("button5").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div5').style.display = 'none';
+
+		document.getElementById("button6").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById("button6").setAttribute("disabled","disabled");
+		document.getElementById("button6").setAttribute("style","opacity:0.3;");
+		document.getElementById("div6incr").checked = false;
+		document.getElementById("div6stable").checked = false;
+		document.getElementById("div6improv").checked = false;
+		document.getElementById('div6').style.display = 'none';
+
+		document.getElementById("button7").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div7').style.display = 'none';
+
+		document.getElementById('div7_1').style.display = 'none';
+
+		document.getElementById('div8').style.display = 'none';
+
+		document.getElementById("button9").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div9').style.display = 'none';
+
+		document.getElementById("button10").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById("button10").setAttribute("disabled","disabled");
+		document.getElementById("button10").setAttribute("style","opacity:0.3;");
+		document.getElementById("div10norm").checked = false;
+		document.getElementById("div10tox").checked = false;
+		document.getElementById('div10').style.display = 'none';
+
+		document.getElementById('div11').style.display = 'none';
+
+		document.getElementById("button12").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div12').style.display = 'none';
+
+		document.getElementById("button13").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div13').style.display = 'none';
+
+		document.getElementById("button14").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div14').style.display = 'none';
+
+		document.getElementById("button15").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div15').style.display = 'none';
+
+		document.getElementById('div16').style.display = 'none';
+
+		document.getElementById("button17").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div17').style.display = 'none';
+
+		document.getElementById("button18").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById("button18").setAttribute("disabled","disabled");
+		document.getElementById("button18").setAttribute("style","opacity:0.3;");
+		document.getElementById("div18stable").checked = false;
+		document.getElementById("div18abnorm").checked = false;
+		document.getElementById('div18').style.display = 'none';
+
+		document.getElementById('div19').style.display = 'none';
+
+		document.getElementById("button20").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div20').style.display = 'none';
+
+		document.getElementById("button21").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById("button21").setAttribute("disabled","disabled");
+		document.getElementById("button21").setAttribute("style","opacity:0.3;");
+		document.getElementById("div21tox").checked = false;
+		document.getElementById("div21norm").checked = false;
+		document.getElementById('div21').style.display = 'none';
+
+		document.getElementById("button22").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div22').style.display = 'none';
+
+		document.getElementById("button23").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div23').style.display = 'none';
+
+		document.getElementById("button24").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById("button24").setAttribute("disabled","disabled");
+		document.getElementById("button24").setAttribute("style","opacity:0.3;");
+		document.getElementById("div24norm").checked = false;
+		document.getElementById("div24abn").checked = false;
+		document.getElementById('div24').style.display = 'none';
+
+		document.getElementById("button25").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div25').style.display = 'none';
+
+		document.getElementById("button26").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById("button26").setAttribute("disabled","disabled");
+		document.getElementById("button26").setAttribute("style","opacity:0.3;");
+		document.getElementById("div26norm").checked = false;
+		document.getElementById("div26abn").checked = false;
+		document.getElementById('div26').style.display = 'none';
+
+		document.getElementById('div27').style.display = 'none';
+
+		document.getElementById("button28").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div28').style.display = 'none';
+
+		document.getElementById("button29").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div29').style.display = 'none';
+
+		document.getElementById('div30').style.display = 'none';
+
+		document.getElementById("button31").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div31').style.display = 'none';
+
+		document.getElementById("button32").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div32').style.display = 'none';
+
+		document.getElementById("button33").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div33').style.display = 'none';
+
+		document.getElementById("button34").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div34').style.display = 'none';
+
+		document.getElementById("button35").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div35').style.display = 'none';
+
+		document.getElementById("button36").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div36').style.display = 'none';
+
+		document.getElementById('div37').style.display = 'none';
+
+	}
+	
+	function hide4(id) {
+		
+		document.getElementById("button4").setAttribute("src","image/plus_btn.png"); 
+		
+		document.getElementById("button5").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div5').style.display = 'none';
+
+		document.getElementById("button6").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById("button6").setAttribute("disabled","disabled");
+		document.getElementById("button6").setAttribute("style","opacity:0.3;");
+		document.getElementById("div6incr").checked = false;
+		document.getElementById("div6stable").checked = false;
+		document.getElementById("div6improv").checked = false;
+		document.getElementById('div6').style.display = 'none';
+
+		document.getElementById("button7").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div7').style.display = 'none';
+
+		document.getElementById('div7_1').style.display = 'none';
+
+		document.getElementById('div8').style.display = 'none';
+
+		document.getElementById("button9").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div9').style.display = 'none';
+
+		document.getElementById("button10").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById("button10").setAttribute("disabled","disabled");
+		document.getElementById("button10").setAttribute("style","opacity:0.3;");
+		document.getElementById("div10norm").checked = false;
+		document.getElementById("div10tox").checked = false;
+		document.getElementById('div10').style.display = 'none';
+
+		document.getElementById('div11').style.display = 'none';
+
+		document.getElementById("button12").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div12').style.display = 'none';
+
+		document.getElementById("button13").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div13').style.display = 'none';
+
+		document.getElementById("button14").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div14').style.display = 'none';
+
+		document.getElementById("button15").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div15').style.display = 'none';
+
+		document.getElementById('div16').style.display = 'none';
+
+		document.getElementById("button17").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div17').style.display = 'none';
+
+		document.getElementById("button18").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById("button18").setAttribute("disabled","disabled");
+		document.getElementById("button18").setAttribute("style","opacity:0.3;");
+		document.getElementById("div18stable").checked = false;
+		document.getElementById("div18abnorm").checked = false;
+		document.getElementById('div18').style.display = 'none';
+
+		document.getElementById('div19').style.display = 'none';
+
+		document.getElementById("button20").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div20').style.display = 'none';
+
+		document.getElementById("button21").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById("button21").setAttribute("disabled","disabled");
+		document.getElementById("button21").setAttribute("style","opacity:0.3;");
+		document.getElementById("div21tox").checked = false;
+		document.getElementById("div21norm").checked = false;
+		document.getElementById('div21').style.display = 'none';
+
+		document.getElementById("button22").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div22').style.display = 'none';
+
+		document.getElementById("button23").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div23').style.display = 'none';
+
+		document.getElementById("button24").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById("button24").setAttribute("disabled","disabled");
+		document.getElementById("button24").setAttribute("style","opacity:0.3;");
+		document.getElementById("div24norm").checked = false;
+		document.getElementById("div24abn").checked = false;
+		document.getElementById('div24').style.display = 'none';
+
+		document.getElementById("button25").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div25').style.display = 'none';
+
+		document.getElementById("button26").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById("button26").setAttribute("disabled","disabled");
+		document.getElementById("button26").setAttribute("style","opacity:0.3;");
+		document.getElementById("div26norm").checked = false;
+		document.getElementById("div26abn").checked = false;
+		document.getElementById('div26').style.display = 'none';
+
+		document.getElementById('div27').style.display = 'none';
+
+		document.getElementById("button28").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div28').style.display = 'none';
+
+		document.getElementById("button29").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div29').style.display = 'none';
+
+		document.getElementById('div30').style.display = 'none';
+
+		document.getElementById("button31").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div31').style.display = 'none';
+
+		document.getElementById("button32").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div32').style.display = 'none';
+
+		document.getElementById("button33").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div33').style.display = 'none';
+
+		document.getElementById("button34").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div34').style.display = 'none';
+
+		document.getElementById("button35").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div35').style.display = 'none';
+
+		document.getElementById("button36").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div36').style.display = 'none';
+
+		document.getElementById('div37').style.display = 'none';
+
+	}
+
+	function hide6(id) {
+		
+		document.getElementById("button6").setAttribute("src","image/plus_btn.png"); 
+		
+		document.getElementById("button7").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div7').style.display = 'none';
+
+		document.getElementById('div7_1').style.display = 'none';
+
+		document.getElementById('div8').style.display = 'none';
+
+		document.getElementById("button9").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div9').style.display = 'none';
+
+		document.getElementById("button10").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById("button10").setAttribute("disabled","disabled");
+		document.getElementById("button10").setAttribute("style","opacity:0.3;");
+		document.getElementById("div10norm").checked = false;
+		document.getElementById("div10tox").checked = false;
+		document.getElementById('div10').style.display = 'none';
+
+		document.getElementById('div11').style.display = 'none';
+
+		document.getElementById("button12").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div12').style.display = 'none';
+
+		document.getElementById("button13").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div13').style.display = 'none';
+
+		document.getElementById("button14").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div14').style.display = 'none';
+
+		document.getElementById("button15").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div15').style.display = 'none';
+
+		document.getElementById('div16').style.display = 'none';
+
+		document.getElementById("button17").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div17').style.display = 'none';
+
+		document.getElementById("button18").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById("button18").setAttribute("disabled","disabled");
+		document.getElementById("button18").setAttribute("style","opacity:0.3;");
+		document.getElementById("div18stable").checked = false;
+		document.getElementById("div18abnorm").checked = false;
+		document.getElementById('div18').style.display = 'none';
+
+		document.getElementById('div19').style.display = 'none';
+
+		document.getElementById("button20").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div20').style.display = 'none';
+
+		document.getElementById("button21").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById("button21").setAttribute("disabled","disabled");
+		document.getElementById("button21").setAttribute("style","opacity:0.3;");
+		document.getElementById("div21tox").checked = false;
+		document.getElementById("div21norm").checked = false;
+		document.getElementById('div21').style.display = 'none';
+
+		document.getElementById("button22").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div22').style.display = 'none';
+
+		document.getElementById("button23").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div23').style.display = 'none';
+
+		document.getElementById("button24").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById("button24").setAttribute("disabled","disabled");
+		document.getElementById("button24").setAttribute("style","opacity:0.3;");
+		document.getElementById("div24norm").checked = false;
+		document.getElementById("div24abn").checked = false;
+		document.getElementById('div24').style.display = 'none';
+
+		document.getElementById("button25").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div25').style.display = 'none';
+
+		document.getElementById("button26").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById("button26").setAttribute("disabled","disabled");
+		document.getElementById("button26").setAttribute("style","opacity:0.3;");
+		document.getElementById("div26norm").checked = false;
+		document.getElementById("div26abn").checked = false;
+		document.getElementById('div26').style.display = 'none';
+
+		document.getElementById('div27').style.display = 'none';
+
+		document.getElementById("button28").setAttribute("src","image/plus_btn.png");
+		document.getElementById('div28').style.display = 'none';
+
+		document.getElementById("button29").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div29').style.display = 'none';
+
+		document.getElementById('div30').style.display = 'none';
+
+		document.getElementById("button31").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div31').style.display = 'none';
+
+		document.getElementById("button32").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div32').style.display = 'none';
+
+		document.getElementById("button33").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div33').style.display = 'none';
+
+		document.getElementById("button34").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div34').style.display = 'none';
+
+		document.getElementById("button35").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div35').style.display = 'none';
+
+		document.getElementById("button36").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div36').style.display = 'none';
+
+		document.getElementById('div37').style.display = 'none';
+	}
+	
+	function hide10(id) {
+		
+		document.getElementById("button10").setAttribute("src","image/plus_btn.png"); 
+		
+		document.getElementById('div11').style.display = 'none';
+
+		document.getElementById("button12").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div12').style.display = 'none';
+
+		document.getElementById("button13").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div13').style.display = 'none';
+
+		document.getElementById("button14").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div14').style.display = 'none';
+
+		document.getElementById("button15").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div15').style.display = 'none';
+
+		document.getElementById('div16').style.display = 'none';
+
+		document.getElementById("button17").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div17').style.display = 'none';
+
+		document.getElementById("button18").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById("button18").setAttribute("disabled","disabled");
+		document.getElementById("button18").setAttribute("style","opacity:0.3;");
+		document.getElementById("div18stable").checked = false;
+		document.getElementById("div18abnorm").checked = false;
+		document.getElementById('div18').style.display = 'none';
+
+		document.getElementById('div19').style.display = 'none';
+
+		document.getElementById("button20").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div20').style.display = 'none';
+
+		document.getElementById("button21").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById("button21").setAttribute("disabled","disabled");
+		document.getElementById("button21").setAttribute("style","opacity:0.3;");
+		document.getElementById("div21tox").checked = false;
+		document.getElementById("div21norm").checked = false;
+		document.getElementById('div21').style.display = 'none';
+
+		document.getElementById("button22").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div22').style.display = 'none';
+
+		document.getElementById("button23").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div23').style.display = 'none';
+
+		document.getElementById("button24").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById("button24").setAttribute("disabled","disabled");
+		document.getElementById("button24").setAttribute("style","opacity:0.3;");
+		document.getElementById("div24norm").checked = false;
+		document.getElementById("div24abn").checked = false;
+		document.getElementById('div24').style.display = 'none';
+
+		document.getElementById("button25").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div25').style.display = 'none';
+
+		document.getElementById("button26").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById("button26").setAttribute("disabled","disabled");
+		document.getElementById("button26").setAttribute("style","opacity:0.3;");
+		document.getElementById("div26norm").checked = false;
+		document.getElementById("div26abn").checked = false;
+		document.getElementById('div26').style.display = 'none';
+
+		document.getElementById('div27').style.display = 'none';
+
+		document.getElementById("button28").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div28').style.display = 'none';
+
+		document.getElementById("button29").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div29').style.display = 'none';
+
+		document.getElementById('div30').style.display = 'none';
+
+		document.getElementById("button31").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div31').style.display = 'none';
+
+		document.getElementById("button32").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div32').style.display = 'none';
+
+		document.getElementById("button33").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div33').style.display = 'none';
+
+		document.getElementById("button34").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div34').style.display = 'none';
+
+		document.getElementById("button35").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div35').style.display = 'none';
+
+		document.getElementById("button36").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div36').style.display = 'none';
+
+		document.getElementById('div37').style.display = 'none';
+
+	}
+	
+	function hide18(id) {
+		
+		document.getElementById("button18").setAttribute("src","image/plus_btn.png"); 
+		
+		document.getElementById('div19').style.display = 'none';
+
+		document.getElementById("button20").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div20').style.display = 'none';
+
+		document.getElementById("button21").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById("button21").setAttribute("disabled","disabled");
+		document.getElementById("button21").setAttribute("style","opacity:0.3;");
+		document.getElementById("div21tox").checked = false;
+		document.getElementById("div21norm").checked = false;
+		document.getElementById('div21').style.display = 'none';
+
+		document.getElementById("button22").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div22').style.display = 'none';
+
+		document.getElementById("button23").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div23').style.display = 'none';
+
+		document.getElementById("button24").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById("button24").setAttribute("disabled","disabled");
+		document.getElementById("button24").setAttribute("style","opacity:0.3;");
+		document.getElementById("div24norm").checked = false;
+		document.getElementById("div24abn").checked = false;
+		document.getElementById('div24').style.display = 'none';
+
+		document.getElementById("button25").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div25').style.display = 'none';
+
+		document.getElementById("button26").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById("button26").setAttribute("disabled","disabled");
+		document.getElementById("button26").setAttribute("style","opacity:0.3;");
+		document.getElementById("div26norm").checked = false;
+		document.getElementById("div26abn").checked = false;
+		document.getElementById('div26').style.display = 'none';
+
+		document.getElementById('div27').style.display = 'none';
+
+		document.getElementById("button28").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div28').style.display = 'none';
+
+		document.getElementById("button29").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div29').style.display = 'none';
+
+		document.getElementById('div30').style.display = 'none';
+
+		document.getElementById("button31").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div31').style.display = 'none';
+
+		document.getElementById("button32").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div32').style.display = 'none';
+
+		document.getElementById("button33").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div33').style.display = 'none';
+
+		document.getElementById("button34").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div34').style.display = 'none';
+
+		document.getElementById("button35").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div35').style.display = 'none';
+
+		document.getElementById("button36").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div36').style.display = 'none';
+
+		document.getElementById('div37').style.display = 'none';
+	
+	}
+	
+function hide21(id) {
+		
+		document.getElementById("button21").setAttribute("src","image/plus_btn.png"); 
+	
+		document.getElementById("button22").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div22').style.display = 'none';
+
+		document.getElementById("button23").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div23').style.display = 'none';
+
+		document.getElementById("button24").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById("button24").setAttribute("disabled","disabled");
+		document.getElementById("button24").setAttribute("style","opacity:0.3;");
+		document.getElementById("div24norm").checked = false;
+		document.getElementById("div24abn").checked = false;
+		document.getElementById('div24').style.display = 'none';
+
+		document.getElementById("button25").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div25').style.display = 'none';
+
+		document.getElementById("button26").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById("button26").setAttribute("disabled","disabled");
+		document.getElementById("button26").setAttribute("style","opacity:0.3;");
+		document.getElementById("div26norm").checked = false;
+		document.getElementById("div26abn").checked = false;
+		document.getElementById('div26').style.display = 'none';
+
+		document.getElementById('div27').style.display = 'none';
+
+		document.getElementById("button28").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div28').style.display = 'none';
+
+		document.getElementById("button29").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div29').style.display = 'none';
+
+		document.getElementById('div30').style.display = 'none';
+
+		document.getElementById("button31").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div31').style.display = 'none';
+
+		document.getElementById("button32").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div32').style.display = 'none';
+
+		document.getElementById("button33").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div33').style.display = 'none';
+
+		document.getElementById("button34").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div34').style.display = 'none';
+
+		document.getElementById("button35").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div35').style.display = 'none';
+
+		document.getElementById("button36").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div36').style.display = 'none';
+
+		document.getElementById('div37').style.display = 'none';
+	}
+	
+	function hide24(id) {
+		
+		document.getElementById("button24").setAttribute("src","image/plus_btn.png"); 
+		
+		document.getElementById("button25").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div25').style.display = 'none';
+
+		document.getElementById("button26").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById("button26").setAttribute("disabled","disabled");
+		document.getElementById("button26").setAttribute("style","opacity:0.3;");
+		document.getElementById("div26norm").checked = false;
+		document.getElementById("div26abn").checked = false;
+		document.getElementById('div26').style.display = 'none';
+
+		document.getElementById('div27').style.display = 'none';
+
+		document.getElementById("button28").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div28').style.display = 'none';
+
+		document.getElementById("button29").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div29').style.display = 'none';
+
+		document.getElementById('div30').style.display = 'none';
+
+		document.getElementById("button31").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div31').style.display = 'none';
+
+		document.getElementById("button32").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div32').style.display = 'none';
+
+		document.getElementById("button33").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div33').style.display = 'none';
+
+		document.getElementById("button34").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div34').style.display = 'none';
+
+		document.getElementById("button35").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div35').style.display = 'none';
+
+		document.getElementById("button36").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div36').style.display = 'none';
+
+		document.getElementById('div37').style.display = 'none';
+
+	}
+	
+	function hide26(id) {
+		
+		document.getElementById("button26").setAttribute("src","image/plus_btn.png"); 
+		
+		document.getElementById('div27').style.display = 'none';
+
+		document.getElementById("button28").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div28').style.display = 'none';
+
+		document.getElementById("button29").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div29').style.display = 'none';
+
+		document.getElementById('div30').style.display = 'none';
+
+		document.getElementById("button31").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div31').style.display = 'none';
+
+		document.getElementById("button32").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div32').style.display = 'none';
+
+		document.getElementById("button33").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div33').style.display = 'none';
+
+		document.getElementById("button34").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div34').style.display = 'none';
+
+		document.getElementById("button35").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div35').style.display = 'none';
+
+		document.getElementById("button36").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div36').style.display = 'none';
+
+		document.getElementById('div37').style.display = 'none';
+	}
+	
+function hide29(id) {
+
+		document.getElementById('div30').style.display = 'none';
+
+		document.getElementById("button31").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div31').style.display = 'none';
+
+		document.getElementById("button32").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div32').style.display = 'none';
+
+		document.getElementById("button33").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div33').style.display = 'none';
+
+		document.getElementById("button34").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div34').style.display = 'none';
+
+		document.getElementById("button35").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div35').style.display = 'none';
+
+		document.getElementById("button36").setAttribute("src","image/plus_btn.png"); 
+		document.getElementById('div36').style.display = 'none';
+
+		document.getElementById('div37').style.display = 'none';
+	}
+	
+	function enableBtn(name) {
+		var btn = document.getElementsByName(name)[0];
+		btn.removeAttribute("disabled");
+		btn.setAttribute("style","opacity:1;")
+	}
+			</script>
+
+
+</body>
+</html>
